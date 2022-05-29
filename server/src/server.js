@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const app = require("./app");
-const port = process.env.PORT || 5001;
+require("dotenv").config({
+    path: __dirname + "/../.env",
+    debug: true,
+    override: false,
+});
 
+const port = process.env.PORT || 5001;
 mongoose
     .connect("mongodb://localhost:27017/bubup")
     .then(() => {
