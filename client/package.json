@@ -17,7 +17,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node src/client.js",
+    "start": "react-scripts start",
     "test": "jest",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
