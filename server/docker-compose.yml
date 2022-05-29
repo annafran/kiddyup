@@ -5,8 +5,8 @@ services:
         expose:
             - "27017"
         volumes:
-            - mum-project_mongodb_data_container:/data/db
+            - bubup-mongodb_data_container:/data/db
         ports:
             - "27017:27017"
 volumes:
-    mongodb_data_container: mum-project
+    mongodb_data_container: bubup
