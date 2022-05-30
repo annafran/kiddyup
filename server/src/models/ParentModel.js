@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
 
 const ParentSchema = new Schema(
@@ -13,7 +12,7 @@ const ParentSchema = new Schema(
         ageChildTwo: { type: Number },
         genderChildOne: { type: String },
         genderChildTwo: { type: String },
-        hobbies: [{ type: String }],
+        hobbies: { type: String },
         location: {
             lat: { type: String, required: true },
             long: { type: String, required: true },

@@ -2,7 +2,7 @@ const request = require("supertest");
 const app = require("./app");
 
 describe("app", () => {
-    it("should create a new profile and status of 201 when calling POST/profiles", async () => {
+    it("should create a new profile and status of 201 when calling POST/ profiles", async () => {
         const reqBody = {
             firstName: "Anna",
             lastName: "Munro",
@@ -13,7 +13,7 @@ describe("app", () => {
             ageChildTwo: 1,
             genderChildOne: "f",
             genderChildTwo: "m",
-            hobbies: ["dancing", "cooking"],
+            hobbies: "dancing",
             location: {
                 lat: "23444",
                 long: "34999238",
