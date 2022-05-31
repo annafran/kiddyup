@@ -14,7 +14,7 @@ mongoose
 
 const seedDb = async () => {
     await ParentModel.deleteMany({});
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 20; i++) {
         const random20 = Math.floor(Math.random() * 20);
         const profile = new ParentModel({
             firstName: `${random20(firstName)}`,
