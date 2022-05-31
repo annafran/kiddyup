@@ -5,8 +5,8 @@ services:
         expose:
             - "27017"
         volumes:
-            - bubup-mongodb_data_container:/data/db
+            - kiddyup-mongodb_data_container:/data/db
         ports:
             - "27017:27017"
 volumes:
-    bubup-mongodb_data_container:
+    kiddyup-mongodb_data_container:

@@ -12,8 +12,8 @@ mongoose
     .then(() => {
         console.log("Connected to mongoose");
     })
-    .catch((err) => {
-        console.log("Connection to mongoose failed", err);
+    .catch((error) => {
+        console.log("Connection to mongoose failed", error);
     });
 
 app.listen(port, () => {
