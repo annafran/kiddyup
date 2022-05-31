@@ -8,7 +8,7 @@ require("dotenv").config({
 
 const port = process.env.PORT || 5001;
 mongoose
-    .connect("mongodb://localhost:27017/bubup")
+    .connect("mongodb://localhost:27017/kiddyup")
     .then(() => {
         console.log("Connected to mongoose");
     })
