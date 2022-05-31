@@ -18,8 +18,17 @@ const ProfileList = () => {
                 {profiles.map((profile) => {
                     return (
                         <>
-                            <li key={profile.id}>
+                            <li className="profileList" key={profile.id}>
                                 <h2>{profile.firstName}</h2>
+                                <p>{profile.parentStatus}</p>
+                                <p>{profile.bio}</p>
+                                <p>{profile.numberChildren}</p>
+                                <p>{profile.birthdayChildOne}</p>
+                                <p>{profile.neighbourhood}</p>
+                                <img
+                                    src={profile.profilePhoto}
+                                    alt={profile.firstName}
+                                />
                             </li>
                         </>
                     );
