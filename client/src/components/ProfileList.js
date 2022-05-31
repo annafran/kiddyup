@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./ProfileList.css";
 
 const ProfileList = () => {
     const [profiles, setProfiles] = useState([]);
@@ -20,11 +21,13 @@ const ProfileList = () => {
                         <>
                             <li className="profileList" key={profile.id}>
                                 <h2>{profile.firstName}</h2>
-                                <p>{profile.parentStatus}</p>
+                                <p>I'm a {profile.parentStatus}</p>
                                 <p>{profile.bio}</p>
-                                <p>{profile.numberChildren}</p>
+                                <p>
+                                    Number of children: {profile.numberChildren}
+                                </p>
                                 <p>{profile.birthdayChildOne}</p>
-                                <p>{profile.neighbourhood}</p>
+                                <p>I live in {profile.neighbourhood}</p>
                                 <img
                                     src={profile.profilePhoto}
                                     alt={profile.firstName}
