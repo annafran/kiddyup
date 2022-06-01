@@ -2,6 +2,30 @@ const fetch = require("cross-fetch");
 const mongoose = require("mongoose");
 const ParentModel = require("../models/ParentModel");
 
+const hobbies = [
+    "swimming",
+    "dancing",
+    "cooking",
+    "running",
+    "listening to music",
+    "hiking",
+    "reading books",
+    "playing video games",
+    "playing the guitar",
+    "travelling",
+    "writing poems",
+    "crochet",
+    "knitting",
+    "painting",
+    "walking",
+    "going out with friends",
+    "diving",
+    "camping",
+    "waterskiing",
+    "surfing",
+    "playing with my kids",
+];
+
 mongoose
     .connect("mongodb://localhost:27017/kiddyup")
     .then(() => {
@@ -20,7 +44,7 @@ const seedDb = async () => {
 
     const getData = async () => {
         const response = await fetch(
-            "https://randomuser.me/api/?inc=gender,name,location,email,dob,picture&results=50&noinfo"
+            "https://randomuser.me/api/?inc=gender,name,location,gender,email,dob,picture&nat=nz&results=50&noinfo"
         );
         const data = await response.json();
         const profiles = data.results;
@@ -33,15 +57,20 @@ const seedDb = async () => {
             return {
                 firstName: profile.name.first,
                 lastName: profile.name.last,
-                parentStatus: "update this",
+                parentStatus: profile.gender === "male" ? "papa" : "mama",
                 age: profile.dob.age,
                 email: profile.email,
                 profilePhoto: profile.picture.medium,
-                bio: "update this",
                 numberChildren: Math.floor(Math.random() * 6),
-                birthdayChildOne: 2021 - 11 - 03,
-                neighbourhood: profile.location.city,
-                hobbies: ["dancing", "cooking"],
+                ageChildOne: {
+                    years: Math.floor(Math.random() * 11),
+                    months: Math.floor(Math.random() * 13),
+                },
+                city: profile.location.city,
+                hobbies: [
+                    hobbies[Math.floor(Math.random() * hobbies.length)],
+                    hobbies[Math.floor(Math.random() * hobbies.length)],
+                ],
                 // coordinates: [profile.coordinates],
             };
         });
