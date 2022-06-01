@@ -1,6 +1,6 @@
+const fetch = require("cross-fetch");
 const mongoose = require("mongoose");
 const ParentModel = require("../models/ParentModel");
-const { names, bios, photos, status } = require("./seedHelpers");
 
 mongoose
     .connect("mongodb://localhost:27017/kiddyup")
@@ -14,16 +14,34 @@ mongoose
 
 const seedDb = async () => {
     await ParentModel.deleteMany({});
-    for (let i = 0; i < 20; i++) {
-        const random20 = Math.floor(Math.random() * 20);
-        const profile = new ParentModel({
-            firstName: `${random20(firstName)}`,
-            parentStatus: `${random20(status)}`,
+
+    const getData = async () => {
+        const response = await fetch(
+            "https://randomuser.me/api/?inc=gender,name,location,email,dob,phone,picture&results=50&noinfo"
+        );
+        const data = await response.json();
+        const profiles = data.results;
+        return profiles;
+    };
+
+    const createProfiles = async () => {
+        const profiles = await getData();
+        const arrayOfProfiles = profiles.map((profile) => {
+            return {
+                firstName: `${profile.name.first}`,
+                hobby: "test",
+            };
         });
 
-        await profile.save();
-    }
+        console.log(arrayOfProfiles);
+        for (let person of arrayOfProfiles) {
+            const parent = new ParentModel(person);
+            await parent.save();
+        }
+    };
+    createProfiles();
 };
+
 seedDb().then(() => {
     mongoose.connection.close();
 });
