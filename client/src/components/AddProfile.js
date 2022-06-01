@@ -54,11 +54,12 @@ const AddProfile = () => {
         console.log("added profile");
     };
 
-    const nzCitiesArray = () => {
-        nzCities.map((nzCity) => {
-            return nzCity.city;
+    const getCitiesArray = (nzCities) => {
+        return nzCities.map((nzCityData) => {
+            return nzCityData.city;
         });
     };
+    const nzCitiesArray = getCitiesArray(nzCities);
 
     return (
         <Box sx={{ maxWidth: 300 }} mx="auto">
