@@ -1,10 +1,12 @@
 import { TextInput, Checkbox, Button, Group, Box } from "@mantine/core";
 import { useState } from "react";
+import { post } from "superagent";
 
 const AddProfile = () => {
     const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const newProfile = {
             firstName: firstName,
@@ -13,14 +15,18 @@ const AddProfile = () => {
             age: age,
             email: email,
             profilePhoto: profilePhoto,
-            numberChildren: numberChildren,
-            ageChildren: [
-                { childOne: childOne },
-                { childTwo: childTwo },
-                { childThree: childThree },
-                { childFour: childFour },
-            ],
+            children: [{ years: years }, { months: months }],
+            city: city,
+            hobbies: [hobbies],
+            coordinates: [latitude, longitude],
         };
+
+        await fetch("http://localhost:5002/profiles", {
+            method: post,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newProfile),
+        });
+        console.log("added profile");
     };
 
     return (
@@ -34,6 +40,13 @@ const AddProfile = () => {
                         setFirstName(event.currentTarget.value)
                     }
                     placeholder="First Name"
+                />
+                <TextInput
+                    required
+                    label="lastName"
+                    value={lastName}
+                    onChange={(event) => setLastName(event.currentTarget.value)}
+                    placeholder="Last Name"
                 />
 
                 <Checkbox
