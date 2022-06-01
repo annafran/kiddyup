@@ -7,6 +7,7 @@ import {
     NumberInput,
 } from "@mantine/core";
 import { useState } from "react";
+import { At } from "tabler-icons-react";
 
 const AddProfile = () => {
     const [firstName, setFirstName] = useState("");
@@ -53,14 +54,16 @@ const AddProfile = () => {
                     onChange={(event) =>
                         setFirstName(event.currentTarget.value)
                     }
-                    placeholder="First Name"
+                    placeholder="Your first name"
+                    error="First name required"
                 />
                 <TextInput
                     required
                     label="Your last name"
                     value={lastName}
                     onChange={(event) => setLastName(event.currentTarget.value)}
-                    placeholder="Last Name"
+                    placeholder="Your last name"
+                    error="Last name required"
                 />
                 <Select
                     label="Mama or Papa?"
@@ -80,6 +83,15 @@ const AddProfile = () => {
                     value={age}
                     onChange={(event) => setAge(event.currentTarget.value)}
                     required
+                />
+                <TextInput
+                    required
+                    label="Your email"
+                    value={email}
+                    onChange={(event) => setEmail(event.currentTarget.value)}
+                    placeholder="Your email"
+                    icon={<At size={14} />}
+                    error=" Invalid email"
                 />
 
                 <Group position="right" mt="md">

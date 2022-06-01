@@ -67,6 +67,10 @@ const seedDb = async () => {
                         years: Math.floor(Math.random() * 11),
                         months: Math.floor(Math.random() * 13),
                     },
+                    {
+                        years: Math.floor(Math.random() * 11),
+                        months: Math.floor(Math.random() * 13),
+                    },
                 ],
                 city: profile.location.city,
                 coordinates: [

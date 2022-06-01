@@ -6,7 +6,10 @@ import {
     Button,
     Group,
     useMantineTheme,
+    Title,
+    ThemeIcon,
 } from "@mantine/core";
+import { MoodKid } from "tabler-icons-react";
 
 const Profile = ({ profile }) => {
     const theme = useMantineTheme();
@@ -15,6 +18,25 @@ const Profile = ({ profile }) => {
         theme.colorScheme === "dark"
             ? theme.colors.dark[1]
             : theme.colors.gray[7];
+
+    const childIcon = (
+        <ThemeIcon variant="outline" radius="lg" size="l" color="pink">
+            <MoodKid size={20} />
+        </ThemeIcon>
+    );
+
+    const renderChild = (child) => {
+        if (child.years === 1) {
+            return `${child.years} year`;
+        }
+        if (child.years > 1) {
+            return `${child.years} years`;
+        } else if (child.months === 1) {
+            return `${child.months} month`;
+        }
+        return `${child.months} months`;
+    };
+
     return (
         <>
             <div style={{ width: 340, margin: "auto" }}>
@@ -22,7 +44,6 @@ const Profile = ({ profile }) => {
                     <Card.Section>
                         <Image
                             src={profile.profilePhoto}
-                            height={160}
                             alt={profile.firstName}
                         />
                     </Card.Section>
@@ -31,20 +52,29 @@ const Profile = ({ profile }) => {
                         position="apart"
                         style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
                     >
-                        <Text weight={500}>{profile.firstName}</Text>
+                        <Title order={1}>{profile.firstName}</Title>
+                        <Text weight={500}>{profile.city}</Text>
                         <Badge color="pink" variant="light">
                             {profile.parentStatus}
                         </Badge>
-                    </Group>
 
-                    <Text
-                        size="sm"
-                        style={{ color: secondaryColor, lineHeight: 1.5 }}
-                    >
-                        I like {profile.hobbies[0]} and {profile.hobbies[1]}. I
-                        live in {profile.city}. I have {profile.numberChildren}{" "}
-                        children.
-                    </Text>
+                        {profile.children.map((child) => {
+                            return (
+                                <div>
+                                    <Badge
+                                        sx={{ paddingLeft: 3 }}
+                                        size="lg"
+                                        radius="xl"
+                                        color="teal"
+                                        variant="outline"
+                                        leftSection={childIcon}
+                                    >
+                                        {renderChild(child)}
+                                    </Badge>
+                                </div>
+                            );
+                        })}
+                    </Group>
 
                     <Button
                         variant="light"
@@ -61,22 +91,3 @@ const Profile = ({ profile }) => {
 };
 
 export default Profile;
-
-{
-    /* <li className="profileList" >
-    <h2></h2>
-    <p>I'm a </p>
-    <p>
-        
-    </p>
-    <p>Number of children: </p>
-    <p>
-        Age of child: {profile.ageChildOne.years}{" "}
-        {profile.ageChildOne.years === 1 ? "year" : "years"},{" "}
-        {profile.ageChildOne.months} months
-    </p>
-    <p>{profile.birthdayChildOne}</p>
-    <p></p>
-    <img src= alt= />
-</li>; */
-}
