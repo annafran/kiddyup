@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { SimpleGrid } from "@mantine/core";
 import Profile from "./Profile";
 
-import "./ProfileList.css";
-
 const ProfileList = () => {
     const [profiles, setProfiles] = useState([]);
 

@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const ChildSchema = new Schema({
-    years: { type: Number },
-    months: { type: Number },
+    years: { type: Number, min: 0 },
+    months: { type: Number, min: 0 },
 });
 
 const ParentSchema = new Schema(
@@ -16,11 +16,11 @@ const ParentSchema = new Schema(
         profilePhoto: { type: String, required: true },
         children: [ChildSchema],
         city: { type: String, required: true },
-        hobbies: { type: [String] },
-        coordinates: {
-            type: [Number, Number],
-            index: "2d",
-        },
+        interests: { type: [String] },
+        // coordinates: {
+        //     type: [Number, Number],
+        //     index: "2d",
+        // },
     },
     {
         toJSON: {

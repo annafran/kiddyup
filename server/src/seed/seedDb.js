@@ -2,28 +2,26 @@ const fetch = require("cross-fetch");
 const mongoose = require("mongoose");
 const ParentModel = require("../models/ParentModel");
 
-const hobbies = [
-    "swimming",
-    "dancing",
-    "cooking",
-    "running",
-    "listening to music",
-    "hiking",
-    "reading books",
-    "playing video games",
-    "playing the guitar",
-    "travelling",
-    "writing poems",
-    "crochet",
-    "knitting",
-    "painting",
-    "walking",
-    "going out with friends",
-    "diving",
-    "camping",
-    "waterskiing",
-    "surfing",
-    "playing with my kids",
+const interests = [
+    "foodie",
+    "fitness lover",
+    "yoga guru",
+    "beauty stylist",
+    "bookworm",
+    "crafty",
+    "green finger",
+    "surfy",
+    "pet lover",
+    "sports fan",
+    "dancer",
+    "music lover",
+    "geek",
+    "social butterfly",
+    "photographer",
+    "gamer",
+    "outdoorsy",
+    "movie goer",
+    "home body",
 ];
 
 mongoose
@@ -73,13 +71,13 @@ const seedDb = async () => {
                     },
                 ],
                 city: profile.location.city,
-                coordinates: [
-                    parseFloat(profile.location.coordinates.latitude),
-                    parseFloat(profile.location.coordinates.longitude),
-                ],
-                hobbies: [
-                    hobbies[Math.floor(Math.random() * hobbies.length)],
-                    hobbies[Math.floor(Math.random() * hobbies.length)],
+                // coordinates: [
+                //     parseFloat(profile.location.coordinates.latitude),
+                //     parseFloat(profile.location.coordinates.longitude),
+                // ],
+                interests: [
+                    interests[Math.floor(Math.random() * interests.length)],
+                    interests[Math.floor(Math.random() * interests.length)],
                 ],
             };
         });

@@ -8,6 +8,8 @@ import {
 } from "@mantine/core";
 import { useState } from "react";
 import { At } from "tabler-icons-react";
+const nzCities = require("../data/nzCities.json");
+const interestsArray = require("../data/interests.json");
 
 const AddProfile = () => {
     const [firstName, setFirstName] = useState("");
@@ -16,10 +18,19 @@ const AddProfile = () => {
     const [age, setAge] = useState(18);
     const [email, setEmail] = useState("");
     const [profilePhoto, setProfilePhoto] = useState("");
-    const [children, setChildren] = useState([]);
+    const [years, setYears] = useState(0);
+    const [months, setMonths] = useState(0);
     const [city, setCity] = useState("");
-    const [hobbies, setHobbies] = useState([]);
-    const [coordinates, setCoordinates] = useState([]);
+    const [interests, setInterests] = useState([]);
+    // const [coordinates, setCoordinates] = useState([]);
+
+    // const lat = (city) => {
+    //     return city.lat;
+    // };
+
+    // const lng = (city) => {
+    //     return city.lng;
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,8 +43,7 @@ const AddProfile = () => {
             profilePhoto: profilePhoto,
             children: [{ years: years }, { months: months }],
             city: city,
-            hobbies: [hobbies],
-            coordinates: [latitude, longitude],
+            // coordinates: [lat, lng],
         };
 
         await fetch("http://localhost:5002/profiles", {
@@ -42,6 +52,12 @@ const AddProfile = () => {
             body: JSON.stringify(newProfile),
         });
         console.log("added profile");
+    };
+
+    const nzCitiesArray = () => {
+        nzCities.map((nzCity) => {
+            return nzCity.city;
+        });
     };
 
     return (
@@ -92,6 +108,50 @@ const AddProfile = () => {
                     placeholder="Your email"
                     icon={<At size={14} />}
                     error=" Invalid email"
+                />
+                <TextInput
+                    required
+                    label="Your photo"
+                    value={profilePhoto}
+                    onChange={(event) =>
+                        setProfilePhoto(event.currentTarget.value)
+                    }
+                    placeholder="Your profile photo link"
+                    error="Profile photo required"
+                />
+                <NumberInput
+                    placeholder="Years"
+                    label="Your child's age in years"
+                    value={years}
+                    onChange={(event) => setYears(event.currentTarget.value)}
+                    required
+                />
+                <NumberInput
+                    placeholder="Months"
+                    label="Your child's age in months"
+                    value={months}
+                    onChange={(event) => setMonths(event.currentTarget.value)}
+                    required
+                />
+                <Select
+                    label="Which city do you live in?"
+                    placeholder="Pick one"
+                    data={nzCitiesArray.map((nzCity) => {
+                        return { value: { nzCity }, label: { nzCity } };
+                    })}
+                    value={parentStatus}
+                    onChange={(event) => setCity(event.currentTarget.value)}
+                />
+                <Select
+                    label="Your interests"
+                    placeholder="Pick one"
+                    data={interestsArray.map((interest) => {
+                        return { value: { interest }, label: { interest } };
+                    })}
+                    value={interests}
+                    onChange={(event) =>
+                        setInterests(event.currentTarget.value)
+                    }
                 />
 
                 <Group position="right" mt="md">

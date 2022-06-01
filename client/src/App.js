@@ -1,15 +1,20 @@
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import ProfileList from "./components/ProfileList";
 import AddProfile from "./components/AddProfile";
+import Layout from "./components/Layout";
+import Home from "./components/Home";
 
 function App() {
     return (
         <div className="App">
-            <header className="header">
-                <h1>Kiddyup - meet other parents</h1>
-            </header>
-            <AddProfile />
-            <ProfileList />
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="profiles" element={<ProfileList />} />
+                    <Route path="signup" element={<AddProfile />} />
+                </Route>
+            </Routes>
         </div>
     );
 }
