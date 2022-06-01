@@ -6,6 +6,9 @@ mongoose
     .connect("mongodb://localhost:27017/kiddyup")
     .then(() => {
         console.log("Connected to mongo db");
+        seedDb().then(() => {
+            mongoose.connection.close();
+        });
     })
     .catch((error) => {
         console.log("Mongoose connection failed");
@@ -17,7 +20,7 @@ const seedDb = async () => {
 
     const getData = async () => {
         const response = await fetch(
-            "https://randomuser.me/api/?inc=gender,name,location,email,dob,phone,picture&results=50&noinfo"
+            "https://randomuser.me/api/?inc=gender,name,location,email,dob,picture&results=50&noinfo"
         );
         const data = await response.json();
         const profiles = data.results;
@@ -28,20 +31,23 @@ const seedDb = async () => {
         const profiles = await getData();
         const arrayOfProfiles = profiles.map((profile) => {
             return {
-                firstName: `${profile.name.first}`,
-                hobby: "test",
+                firstName: profile.name.first,
+                lastName: profile.name.last,
+                parentStatus: "update this",
+                age: profile.dob.age,
+                email: profile.email,
+                profilePhoto: profile.picture.medium,
+                bio: "update this",
+                numberChildren: Math.floor(Math.random() * 6),
+                birthdayChildOne: 2021 - 11 - 03,
+                neighbourhood: profile.location.city,
+                hobbies: ["dancing", "cooking"],
+                // coordinates: [profile.coordinates],
             };
         });
 
-        console.log(arrayOfProfiles);
-        for (let person of arrayOfProfiles) {
-            const parent = new ParentModel(person);
-            await parent.save();
-        }
+        await ParentModel.insertMany(arrayOfProfiles);
     };
-    createProfiles();
-};
 
-seedDb().then(() => {
-    mongoose.connection.close();
-});
+    await createProfiles();
+};

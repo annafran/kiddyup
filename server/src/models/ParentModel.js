@@ -6,7 +6,7 @@ const ParentSchema = new Schema(
         firstName: { type: String, required: true },
         lastName: { type: String, required: true },
         parentStatus: { type: String, required: true },
-        birthday: { type: Date, required: true },
+        age: { type: Number, required: true },
         email: { type: String, required: true },
         profilePhoto: { type: String, required: true },
         bio: { type: String, required: true },
@@ -17,10 +17,10 @@ const ParentSchema = new Schema(
         birthdayChildFour: { type: Date },
         neighbourhood: { type: String, required: true },
         hobbies: { type: [String] },
-        coordinates: {
-            type: [Number],
-            required: true,
-        },
+        // coordinates: {
+        //     type: [String],
+        //     required: true,
+        // },
     },
     {
         toJSON: {
