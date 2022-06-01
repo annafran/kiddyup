@@ -60,7 +60,7 @@ const seedDb = async () => {
                 parentStatus: profile.gender === "male" ? "papa" : "mama",
                 age: profile.dob.age,
                 email: profile.email,
-                profilePhoto: profile.picture.medium,
+                profilePhoto: profile.picture.large,
                 numberChildren: Math.floor(Math.random() * 6),
                 ageChildOne: {
                     years: Math.floor(Math.random() * 11),
