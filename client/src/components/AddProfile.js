@@ -1,10 +1,24 @@
-import { TextInput, Checkbox, Button, Group, Box } from "@mantine/core";
+import {
+    TextInput,
+    Button,
+    Group,
+    Box,
+    Select,
+    NumberInput,
+} from "@mantine/core";
 import { useState } from "react";
-import { post } from "superagent";
 
 const AddProfile = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [parentStatus, setParentStatus] = useState("");
+    const [age, setAge] = useState(18);
+    const [email, setEmail] = useState("");
+    const [profilePhoto, setProfilePhoto] = useState("");
+    const [children, setChildren] = useState([]);
+    const [city, setCity] = useState("");
+    const [hobbies, setHobbies] = useState([]);
+    const [coordinates, setCoordinates] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,7 +36,7 @@ const AddProfile = () => {
         };
 
         await fetch("http://localhost:5002/profiles", {
-            method: post,
+            method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProfile),
         });
@@ -34,7 +48,7 @@ const AddProfile = () => {
             <form onSubmit={handleSubmit}>
                 <TextInput
                     required
-                    label="firstName"
+                    label="Your first name"
                     value={firstName}
                     onChange={(event) =>
                         setFirstName(event.currentTarget.value)
@@ -43,18 +57,29 @@ const AddProfile = () => {
                 />
                 <TextInput
                     required
-                    label="lastName"
+                    label="Your last name"
                     value={lastName}
                     onChange={(event) => setLastName(event.currentTarget.value)}
                     placeholder="Last Name"
                 />
-
-                <Checkbox
-                    mt="md"
-                    label="I agree to sell my privacy"
-                    {...form.getInputProps("termsOfService", {
-                        type: "checkbox",
-                    })}
+                <Select
+                    label="Mama or Papa?"
+                    placeholder="Pick one"
+                    data={[
+                        { value: "mama", label: "mama" },
+                        { value: "papa", label: "papa" },
+                    ]}
+                    value={parentStatus}
+                    onChange={(event) =>
+                        setParentStatus(event.currentTarget.value)
+                    }
+                />
+                <NumberInput
+                    placeholder="Your age"
+                    label="Your age"
+                    value={age}
+                    onChange={(event) => setAge(event.currentTarget.value)}
+                    required
                 />
 
                 <Group position="right" mt="md">
