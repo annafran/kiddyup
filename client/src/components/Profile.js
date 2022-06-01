@@ -8,6 +8,7 @@ import {
     useMantineTheme,
     Title,
     ThemeIcon,
+    Center,
 } from "@mantine/core";
 import { MoodKid } from "tabler-icons-react";
 
@@ -20,9 +21,13 @@ const Profile = ({ profile }) => {
             : theme.colors.gray[7];
 
     const childIcon = (
-        <ThemeIcon variant="outline" radius="lg" size="l" color="pink">
-            <MoodKid size={20} />
-        </ThemeIcon>
+        <div>
+            <Center>
+                <ThemeIcon variant="filled" radius="lg" size="l" color="white">
+                    <MoodKid size={20} />
+                </ThemeIcon>
+            </Center>
+        </div>
     );
 
     const renderChild = (child) => {
@@ -65,8 +70,8 @@ const Profile = ({ profile }) => {
                                         sx={{ paddingLeft: 3 }}
                                         size="lg"
                                         radius="xl"
-                                        color="teal"
-                                        variant="outline"
+                                        color="white"
+                                        variant="filled"
                                         leftSection={childIcon}
                                     >
                                         {renderChild(child)}
