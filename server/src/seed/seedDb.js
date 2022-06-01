@@ -62,16 +62,21 @@ const seedDb = async () => {
                 email: profile.email,
                 profilePhoto: profile.picture.large,
                 numberChildren: Math.floor(Math.random() * 6),
-                ageChildOne: {
-                    years: Math.floor(Math.random() * 11),
-                    months: Math.floor(Math.random() * 13),
-                },
+                children: [
+                    {
+                        years: Math.floor(Math.random() * 11),
+                        months: Math.floor(Math.random() * 13),
+                    },
+                ],
                 city: profile.location.city,
+                coordinates: [
+                    parseFloat(profile.location.coordinates.latitude),
+                    parseFloat(profile.location.coordinates.longitude),
+                ],
                 hobbies: [
                     hobbies[Math.floor(Math.random() * hobbies.length)],
                     hobbies[Math.floor(Math.random() * hobbies.length)],
                 ],
-                // coordinates: [profile.coordinates],
             };
         });
 

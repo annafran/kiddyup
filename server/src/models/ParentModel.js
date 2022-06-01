@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+const ChildSchema = new Schema({
+    years: { type: Number },
+    months: { type: Number },
+});
+
 const ParentSchema = new Schema(
     {
         firstName: { type: String, required: true },
@@ -9,17 +14,13 @@ const ParentSchema = new Schema(
         age: { type: Number, required: true },
         email: { type: String, required: true },
         profilePhoto: { type: String, required: true },
-        numberChildren: { type: Number, required: true },
-        ageChildOne: { years: { type: Number }, months: { type: Number } },
-        ageChildTwo: { years: { type: Number }, months: { type: Number } },
-        ageChildThree: { years: { type: Number }, months: { type: Number } },
-        ageChildFour: { years: { type: Number }, months: { type: Number } },
+        children: [ChildSchema],
         city: { type: String, required: true },
         hobbies: { type: [String] },
-        // coordinates: {
-        //     type: [String],
-        //     required: true,
-        // },
+        coordinates: {
+            type: [Number, Number],
+            index: "2d",
+        },
     },
     {
         toJSON: {
