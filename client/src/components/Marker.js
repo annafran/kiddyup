@@ -5,7 +5,7 @@ import "./Marker.css";
 
 const Marker = ({ profile }) => {
     return (
-        <>
+        <div>
             <Avatar
                 src={profile.profilePhoto}
                 alt={profile.firstName}
@@ -14,7 +14,7 @@ const Marker = ({ profile }) => {
                 component={Link}
                 to={`/profiles/${profile.id}`}
             />
-        </>
+        </div>
     );
 };
 

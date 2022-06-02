@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GoogleMapReact from "google-map-react";
-import { useEffect } from "react";
+
+// import { useEffect } from "react";
 import Marker from "./Marker";
 
 const Map = (props) => {
@@ -8,14 +9,15 @@ const Map = (props) => {
     const [zoom, setZoom] = useState(12);
     const [profiles, setProfiles] = useState([]);
 
-    useEffect(() => {
-        const getProfiles = async () => {
-            const response = await fetch("http://localhost:5002/profiles");
-            const data = await response.json();
-            setProfiles(data);
-        };
-        getProfiles();
-    }, []);
+    // useEffect(() => {
+    const getProfiles = async () => {
+        const response = await fetch("http://localhost:5002/profiles");
+        const data = await response.json();
+        setProfiles(data);
+    };
+    getProfiles();
+    // }, []);
+
     return (
         <div style={{ height: "100vh", width: "100%" }}>
             <GoogleMapReact
