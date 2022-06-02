@@ -5,7 +5,7 @@ import Marker from "./Marker";
 
 const Map = (props) => {
     const [center, setCenter] = useState({ lat: -40.9006, lng: 174.886 });
-    const [zoom, setZoom] = useState(11);
+    const [zoom, setZoom] = useState(12);
     const [profiles, setProfiles] = useState([]);
 
     useEffect(() => {
