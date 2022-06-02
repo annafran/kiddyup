@@ -5,8 +5,7 @@ import {
     Box,
     Select,
     NumberInput,
-    CheckboxGroup,
-    Checkbox,
+    MultiSelect,
 } from "@mantine/core";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +17,7 @@ const AddProfile = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [parentStatus, setParentStatus] = useState("");
-    const [age, setAge] = useState(18);
+    const [age, setAge] = useState(null);
     const [email, setEmail] = useState("");
     const [profilePhoto, setProfilePhoto] = useState("");
     const [years, setYears] = useState(0);
@@ -48,6 +47,7 @@ const AddProfile = () => {
             profilePhoto: profilePhoto,
             children: [{ years: years }, { months: months }],
             city: city,
+            interests: interests,
             // coordinates: [lat, lng],
         };
 
@@ -62,7 +62,7 @@ const AddProfile = () => {
                 return response.json();
             })
             .then((data) => {
-                console.log(`${data} added`);
+                console.log(data);
                 setIsPending(false);
             })
             .catch((err) => {
@@ -104,20 +104,21 @@ const AddProfile = () => {
                 <Select
                     label="Mama or Papa?"
                     placeholder="Pick one"
+                    // searchable
+                    // clearable
                     data={[
                         { value: "mama", label: "mama" },
                         { value: "papa", label: "papa" },
                     ]}
                     value={parentStatus}
-                    onChange={(event) =>
-                        setParentStatus(event.currentTarget.value)
-                    }
+                    onChange={setParentStatus}
                 />
                 <NumberInput
                     placeholder="Your age"
                     label="Your age"
                     value={age}
-                    onChange={(event) => setAge(event.currentTarget.value)}
+                    min={18}
+                    onChange={(val) => setAge(val)}
                     required
                 />
                 <TextInput
@@ -143,36 +144,43 @@ const AddProfile = () => {
                     placeholder="Years"
                     label="Your child's age in years"
                     value={years}
-                    onChange={(event) => setYears(event.currentTarget.value)}
+                    min={0}
+                    onChange={(val) => setYears(val)}
                     required
                 />
                 <NumberInput
                     placeholder="Months"
                     label="Your child's age in months"
                     value={months}
-                    onChange={(event) => setMonths(event.currentTarget.value)}
+                    max={12}
+                    min={0}
+                    onChange={(val) => setMonths(val)}
                     required
                 />
                 <Select
                     label="Which city do you live in?"
                     placeholder="Pick one"
+                    // searchable
+                    // clearable
                     data={nzCitiesArray.map((nzCity) => {
-                        return { value: { nzCity }, label: { nzCity } };
+                        return nzCity;
                     })}
                     value={city}
-                    onChange={(event) => setCity(event.currentTarget.value)}
+                    onChange={setCity}
                 />
-                <CheckboxGroup
+                <MultiSelect
                     value={interests}
                     label="Select your interests"
+                    searchable
+                    maxSelectedValues={5}
+                    placeholder="Choose up to 5 interests"
+                    clearable
                     onChange={setInterests}
-                >
-                    {interestsArray.map((interest) => {
-                        return <Checkbox label={interest} value={interest} />;
+                    data={interestsArray.map((interest) => {
+                        return interest;
                     })}
-                </CheckboxGroup>
-
-                <Group position="right" mt="md">
+                />
+                <Group position="center" mt="md">
                     {!isPending && <Button type="submit">Submit</Button>}
                     {isPending && (
                         <Button type="submit" disabled>
