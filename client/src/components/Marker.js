@@ -1,14 +1,20 @@
 import React from "react";
+import { Avatar } from "@mantine/core";
+import { Link } from "react-router-dom";
 import "./Marker.css";
 
-const Marker = (props) => {
-    const { color, name, id } = props;
+const Marker = ({ profile }) => {
     return (
-        <div
-            className="marker"
-            style={{ backgroundColor: color, cursor: "pointer" }}
-            title={name}
-        />
+        <>
+            <Avatar
+                src={profile.profilePhoto}
+                alt={profile.firstName}
+                size="sm"
+                radius="lg"
+                component={Link}
+                to={`/profiles/${profile.id}`}
+            />
+        </>
     );
 };
 

@@ -71,10 +71,10 @@ const seedDb = async () => {
                     },
                 ],
                 city: profile.location.city,
-                // coordinates: [
-                //     parseFloat(profile.location.coordinates.latitude),
-                //     parseFloat(profile.location.coordinates.longitude),
-                // ],
+                coordinates: [
+                    parseFloat(profile.location.coordinates.latitude),
+                    parseFloat(profile.location.coordinates.longitude),
+                ],
                 interests: [
                     interests[Math.floor(Math.random() * interests.length)],
                     interests[Math.floor(Math.random() * interests.length)],

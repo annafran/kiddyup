@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 import GoogleMapReact from "google-map-react";
+import { useEffect } from "react";
 import Marker from "./Marker";
 
 const Map = (props) => {
-    const [center, setCenter] = useState({ lat: 11.0168, lng: 76.9558 });
+    const [center, setCenter] = useState({ lat: -40.9006, lng: 174.886 });
     const [zoom, setZoom] = useState(11);
+    const [profiles, setProfiles] = useState([]);
+
+    useEffect(() => {
+        const getProfiles = async () => {
+            const response = await fetch("http://localhost:5002/profiles");
+            const data = await response.json();
+            setProfiles(data);
+        };
+        getProfiles();
+    }, []);
     return (
         <div style={{ height: "100vh", width: "100%" }}>
             <GoogleMapReact
@@ -14,12 +25,18 @@ const Map = (props) => {
                 defaultCenter={center}
                 defaultZoom={zoom}
             >
-                <Marker
-                    lat={11.0168}
-                    lng={76.9558}
-                    text="My Marker"
-                    color="blue"
-                />
+                {profiles.map((profile) => {
+                    return (
+                        <>
+                            <Marker
+                                key={profile.id}
+                                profile={profile}
+                                lat={profile.coordinates[0]}
+                                lng={profile.coordinates[1]}
+                            />
+                        </>
+                    );
+                })}
             </GoogleMapReact>
         </div>
     );
