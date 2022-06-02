@@ -17,6 +17,7 @@ const ParentSchema = new Schema(
         children: [ChildSchema],
         city: { type: String, required: true },
         interests: { type: [String] },
+        createdDate: { type: Date, default: Date.now() },
         // coordinates: {
         //     type: [Number, Number],
         //     index: "2d",

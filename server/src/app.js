@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/profiles", async (req, res, next) => {
     try {
-        const profiles = await ParentModel.find({});
+        const profiles = await ParentModel.find({}).sort({ createdDate: -1 });
         res.status(200).send(profiles);
     } catch (error) {
         next(error);
