@@ -5,8 +5,11 @@ import {
     Box,
     Select,
     NumberInput,
+    CheckboxGroup,
+    Checkbox,
 } from "@mantine/core";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { At } from "tabler-icons-react";
 const nzCities = require("../data/nzCities.json");
 const interestsArray = require("../data/interests.json");
@@ -22,6 +25,7 @@ const AddProfile = () => {
     const [months, setMonths] = useState(0);
     const [city, setCity] = useState("");
     const [interests, setInterests] = useState([]);
+    const [isPending, setIsPending] = useState(false);
     // const [coordinates, setCoordinates] = useState([]);
 
     // const lat = (city) => {
@@ -32,8 +36,9 @@ const AddProfile = () => {
     //     return city.lng;
     // };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        setIsPending(true);
         const newProfile = {
             firstName: firstName,
             lastName: lastName,
@@ -46,12 +51,25 @@ const AddProfile = () => {
             // coordinates: [lat, lng],
         };
 
-        await fetch("http://localhost:5002/profiles", {
+        const navigate = useNavigate;
+
+        fetch("http://localhost:5002/profiles", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProfile),
-        });
-        console.log("added profile");
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(`${data} added`);
+                setIsPending(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+        navigate("/");
     };
 
     const getCitiesArray = (nzCities) => {
@@ -59,6 +77,7 @@ const AddProfile = () => {
             return nzCityData.city;
         });
     };
+
     const nzCitiesArray = getCitiesArray(nzCities);
 
     return (
@@ -140,23 +159,26 @@ const AddProfile = () => {
                     data={nzCitiesArray.map((nzCity) => {
                         return { value: { nzCity }, label: { nzCity } };
                     })}
-                    value={parentStatus}
+                    value={city}
                     onChange={(event) => setCity(event.currentTarget.value)}
                 />
-                <Select
-                    label="Your interests"
-                    placeholder="Pick one"
-                    data={interestsArray.map((interest) => {
-                        return { value: { interest }, label: { interest } };
-                    })}
+                <CheckboxGroup
                     value={interests}
-                    onChange={(event) =>
-                        setInterests(event.currentTarget.value)
-                    }
-                />
+                    label="Select your interests"
+                    onChange={setInterests}
+                >
+                    {interestsArray.map((interest) => {
+                        return <Checkbox label={interest} value={interest} />;
+                    })}
+                </CheckboxGroup>
 
                 <Group position="right" mt="md">
-                    <Button type="submit">Submit</Button>
+                    {!isPending && <Button type="submit">Submit</Button>}
+                    {isPending && (
+                        <Button type="submit" disabled>
+                            Signing you up
+                        </Button>
+                    )}
                 </Group>
             </form>
         </Box>
