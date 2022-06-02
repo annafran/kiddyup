@@ -1,4 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
+// import HeaderAction from "../components/Header";
 
 const Layout = () => {
     return (
@@ -6,6 +7,7 @@ const Layout = () => {
             <header className="header">
                 <h1>Kiddyup - meet other parents</h1>
             </header>
+            {/* <HeaderAction /> */}
             <nav>
                 <ul>
                     <li>
@@ -13,6 +15,9 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/profiles">Profiles</Link>
+                    </li>
+                    <li>
+                        <Link to="/map">Map of profiles</Link>
                     </li>
                     <li>
                         <Link to="/signup">Sign up</Link>
