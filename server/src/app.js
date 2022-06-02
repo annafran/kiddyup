@@ -18,18 +18,28 @@ app.get("/profiles", async (req, res, next) => {
     }
 });
 
-app.get("/profiles/:id", async (req, res) => {
+app.get("/profiles/:id", async (req, res, next) => {
     const { id } = req.params;
     const isValidId = mongoose.Types.ObjectId.isValid(id);
-    if (isValidId) {
-        const profile = await ParentModel.findById(id);
-        if (profile) {
-            return res.status(200).send(profile);
-        }
+    try {
+        if (isValidId) {
+            const profile = await ParentModel.findById(id);
+            if (profile) {
+                return res.status(200).send(profile);
+            }
 
-        return res.status(404).send({ message: "Profile not found" });
-    } else {
-        return res.status(400).send({ message: "Invalid profile Id" });
+            throw new error("Profile not found");
+        } else {
+            throw new error("Invalid profile Id");
+        }
+    } catch (error) {
+        if (error === "Profile not found") {
+            error.status = 404;
+        }
+        if (error === "Invalid profile Id") {
+            error.status = 400;
+        }
+        next(error);
     }
 });
 
@@ -46,25 +56,17 @@ app.post("/profiles", async (req, res, next) => {
 
 module.exports = app;
 
-// app.get("/profiles/:id", async (req, res, next) => {
+// app.get("/profiles/:id", async (req, res) => {
 //     const { id } = req.params;
 //     const isValidId = mongoose.Types.ObjectId.isValid(id);
-//     try {
-//         if (isValidId) {
-//             const profile = await ParentModel.findById(id);
-//             if (profile) {
-//                 return res.status(200).send(profile);
-//             }
-
-//             throw new error(
-//                 res.status(404).send({ message: "Profile not found" })
-//             );
-//         } else {
-//             throw new error(
-//                 res.status(400).send({ message: "Invalid profile Id" })
-//             );
+//     if (isValidId) {
+//         const profile = await ParentModel.findById(id);
+//         if (profile) {
+//             return res.status(200).send(profile);
 //         }
-//     } catch (error) {
-//         next(error);
+
+//         return res.status(404).send({ message: "Profile not found" });
+//     } else {
+//         return res.status(400).send({ message: "Invalid profile Id" });
 //     }
 // });
