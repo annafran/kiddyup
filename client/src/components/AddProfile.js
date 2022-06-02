@@ -25,6 +25,8 @@ const AddProfile = () => {
     const [city, setCity] = useState("");
     const [interests, setInterests] = useState([]);
     const [isPending, setIsPending] = useState(false);
+
+    const navigate = useNavigate();
     // const [coordinates, setCoordinates] = useState([]);
 
     // const lat = (city) => {
@@ -51,8 +53,6 @@ const AddProfile = () => {
             // coordinates: [lat, lng],
         };
 
-        const navigate = useNavigate;
-
         fetch("http://localhost:5002/profiles", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -69,7 +69,7 @@ const AddProfile = () => {
                 console.log(err);
             });
 
-        navigate("/");
+        navigate("/profiles");
     };
 
     const getCitiesArray = (nzCities) => {
@@ -91,7 +91,7 @@ const AddProfile = () => {
                         setFirstName(event.currentTarget.value)
                     }
                     placeholder="Your first name"
-                    error="First name required"
+                    // error="First name required"
                 />
                 <TextInput
                     required
@@ -99,13 +99,13 @@ const AddProfile = () => {
                     value={lastName}
                     onChange={(event) => setLastName(event.currentTarget.value)}
                     placeholder="Your last name"
-                    error="Last name required"
+                    // error="Last name required"
                 />
                 <Select
                     label="Mama or Papa?"
                     placeholder="Pick one"
-                    // searchable
-                    // clearable
+                    searchable
+                    clearable
                     data={[
                         { value: "mama", label: "mama" },
                         { value: "papa", label: "papa" },
@@ -128,7 +128,7 @@ const AddProfile = () => {
                     onChange={(event) => setEmail(event.currentTarget.value)}
                     placeholder="Your email"
                     icon={<At size={14} />}
-                    error=" Invalid email"
+                    // error=" Invalid email"
                 />
                 <TextInput
                     required
@@ -138,7 +138,7 @@ const AddProfile = () => {
                         setProfilePhoto(event.currentTarget.value)
                     }
                     placeholder="Your profile photo link"
-                    error="Profile photo required"
+                    // error="Profile photo required"
                 />
                 <NumberInput
                     placeholder="Years"
@@ -160,8 +160,8 @@ const AddProfile = () => {
                 <Select
                     label="Which city do you live in?"
                     placeholder="Pick one"
-                    // searchable
-                    // clearable
+                    searchable
+                    clearable
                     data={nzCitiesArray.map((nzCity) => {
                         return nzCity;
                     })}
