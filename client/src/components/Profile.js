@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
     Card,
     Image,
@@ -87,7 +88,9 @@ const Profile = ({ profile }) => {
                         fullWidth
                         style={{ marginTop: 14 }}
                     >
-                        Connect with me
+                        <Link to={`/profiles/${profile.id}`}>
+                            Connect with me
+                        </Link>
                     </Button>
                 </Card>
             </div>

@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const ParentModel = require("./models/ParentModel");
+const mongoose = require("mongoose");
 
 app.use(express.json());
 app.use(cors());
@@ -23,12 +24,12 @@ app.get("/profiles/:id", async (req, res) => {
     if (isValidId) {
         const profile = await ParentModel.findById(id);
         if (profile) {
-            return res.send(profile);
+            return res.status(200).send(profile);
         }
 
         return res.status(404).send({ message: "Profile not found" });
     } else {
-        res.status(400).send({ message: "Invalid profile Id" });
+        return res.status(400).send({ message: "Invalid profile Id" });
     }
 });
 
@@ -44,3 +45,26 @@ app.post("/profiles", async (req, res, next) => {
 });
 
 module.exports = app;
+
+// app.get("/profiles/:id", async (req, res, next) => {
+//     const { id } = req.params;
+//     const isValidId = mongoose.Types.ObjectId.isValid(id);
+//     try {
+//         if (isValidId) {
+//             const profile = await ParentModel.findById(id);
+//             if (profile) {
+//                 return res.status(200).send(profile);
+//             }
+
+//             throw new error(
+//                 res.status(404).send({ message: "Profile not found" })
+//             );
+//         } else {
+//             throw new error(
+//                 res.status(400).send({ message: "Invalid profile Id" })
+//             );
+//         }
+//     } catch (error) {
+//         next(error);
+//     }
+// });
