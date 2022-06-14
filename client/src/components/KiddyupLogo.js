@@ -1,14 +1,16 @@
-import { Image, SimpleGrid, Center } from "@mantine/core";
+import { Image, Grid, Center } from "@mantine/core";
 
 const KiddyupLogo = () => {
   return (
-    <div style={{ width: 250, marginLeft: "auto", marginRight: "auto" }}>
-      <SimpleGrid cols={2}>
-        <Image src="kiddyupLogo_pic.png" alt="logo" />
-        <Center>
+    <div style={{ width: 300, marginLeft: "auto", marginRight: "auto" }}>
+      <Grid align="center">
+        <Grid.Col span={4}>
+          <Image src="kiddyupLogo_pic.png" alt="logo" />
+        </Grid.Col>
+        <Grid.Col span={8}>
           <Image src="kiddyupText.png" alt="logo text" />
-        </Center>
-      </SimpleGrid>
+        </Grid.Col>
+      </Grid>
     </div>
   );
 };
