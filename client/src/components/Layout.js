@@ -5,6 +5,7 @@ const Layout = () => {
     return (
         <>
             <header className="header">
+                <img src="kiddyup_logo_trans.png" alt="logo" />
                 <h1>Kiddyup - meet other parents</h1>
             </header>
             {/* <HeaderAction /> */}
