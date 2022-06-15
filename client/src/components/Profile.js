@@ -11,7 +11,7 @@ import {
   ThemeIcon,
   Center,
 } from "@mantine/core";
-import { MoodKid } from "tabler-icons-react";
+import { MoodKid, MapPin } from "tabler-icons-react";
 
 const Profile = ({ profile }) => {
   const theme = useMantineTheme();
@@ -35,6 +35,16 @@ const Profile = ({ profile }) => {
     </div>
   );
 
+  const mapIcon = (
+    <div>
+      <Center>
+        <ThemeIcon style={{ color: "black", backgroundColor: "transparent" }}>
+          <MapPin size={15} />
+        </ThemeIcon>
+      </Center>
+    </div>
+  );
+
   const renderChild = (child) => {
     if (child.years === 1) {
       return `${child.years} year`;
@@ -49,27 +59,29 @@ const Profile = ({ profile }) => {
 
   return (
     <>
-      <div style={{ width: 340, margin: "auto" }}>
-        <Card shadow="sm" p="lg">
+      <div style={{ width: 360, margin: "auto" }}>
+        <Card shadow="sm" p="lg" m={16}>
           <Card.Section>
             <Image src={profile.profilePhoto} alt={profile.firstName} />
           </Card.Section>
-
           <Group
+            columns={2}
             position="apart"
             style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
           >
             <Title style={{ color: "#345c72", fontSize: "1.8rem" }} order={1}>
               {profile.firstName}
             </Title>
-            <Text weight={500}>{profile.city}</Text>
             <Badge
               style={{ color: "#345c72", backgroundColor: "#d4edf4" }}
               variant="light"
             >
               {profile.parentStatus}
             </Badge>
-
+            <Text weight={400}>
+              {/* {mapIcon} */}
+              {profile.city}
+            </Text>
             {profile.children.map((child) => {
               return (
                 <div>

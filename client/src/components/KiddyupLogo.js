@@ -2,7 +2,7 @@ import { Image, Grid, Center } from "@mantine/core";
 
 const KiddyupLogo = () => {
   return (
-    <div style={{ width: 300, marginLeft: "auto", marginRight: "auto" }}>
+    <div style={{ width: 300, marginLeft: 0, marginRight: "auto" }}>
       <Grid align="center">
         <Grid.Col span={4}>
           <Image src="kiddyupLogo_pic.png" alt="logo" />

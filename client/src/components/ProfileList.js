@@ -16,20 +16,12 @@ const ProfileList = () => {
 
   return (
     <>
-      <Container size="80%">
-        <Grid
-          gutter="xl"
-          columns={1}
-          //   spacing={48}
-          //   breakpoints={[
-          //     { minWidth: "sm", cols: 2 },
-          //     { minWidth: "lg", cols: 3 },
-          //   ]}
-        >
+      <Container size="xl">
+        <Grid justify="center" gutter={0}>
           {profiles.map((profile) => {
             return (
               <>
-                <Grid.Col style={{ maxWidth: 340 }}>
+                <Grid.Col style={{ minWidth: 360, maxWidth: 360 }}>
                   <Profile key={profile.id} profile={profile} />
                 </Grid.Col>
               </>
