@@ -7,7 +7,7 @@ The platform has fetches initial seed data from the randomuser.me API.
 
 ## Screenshot of Kiddyup website
 
-![Screenshot of Kiddyup website](screenshot-planit-fullscreen.png)
+![Screenshot of Kiddyup website](kiddyup.png)
 
 ## Dependencies
 
