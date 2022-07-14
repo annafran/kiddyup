@@ -33,16 +33,16 @@ This project uses the following systems:
 
 ## Local development
 
-1. Run `npm install`
-2. Run `npm start` to start the development server
-3. Open `src/App.js` to get started
+1. Run `npm install` in the server folder
+2. Run `npm start` in the server folder to start the development server
+3. Run `npm install` in the client folder
+4. Run `npm start` in the client folder to start the react app
 
 ## Deployed applications
 
-- [Kiddyup](https://planitevents.netlify.app/)
+- [Kiddyup](http://......)
 
 ## Citations
 
-- Header image from: [Unsplash - Photo by Med Mhamdi](https://unsplash.com/photos/mH_E0K581Yk)
 - Logo created on: [Canva](https://www.canva.com/)
 - Favicon created on: [Canva](https://www.canva.com/)
