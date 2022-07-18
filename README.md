@@ -30,17 +30,21 @@ This project uses the following systems:
 ## Prerequisites
 
 - [Node](https://nodejs.org/)
+- [Docker](https://docs.docker.com/get-docker/)
 
 ## Local development
 
-1. Run `npm install` in the server folder
-2. Run `npm start` in the server folder to start the development server
-3. Run `npm install` in the client folder
-4. Run `npm start` in the client folder to start the react app
+1. Navigate to server (`cd server`)
+2. Run `npm install` in server
+3. Run `docker-compose up` in server
+4. Connect to mongodb via MongoDB compass (`mongodb://localhost:27017`)
+5. Navigate to client (`cd client`)
+6. Run `npm install` in client
+7. Run `npm start` in client to start the react app
 
 ## Deployed applications
 
-- [Kiddyup](http://......)
+- [Kiddyup](http://......) - to be updated once deployed
 
 ## Citations
 
