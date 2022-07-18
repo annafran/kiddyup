@@ -37,7 +37,7 @@ This project uses the following systems:
 1. Navigate to server (`cd server`)
 2. Run `npm install` in server
 3. Run `docker-compose up` in server
-4. Connect to mongodb via MongoDB compass (`mongodb://localhost:27017`)
+4. Connect to mongodb via MongoDB compass (`mongodb://localhost:27017/kiddyup`)
 5. Run `npm run seed` to seed the database
 6. Navigate to client (`cd client`)
 7. Run `npm install` in client
