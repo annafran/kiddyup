@@ -3,87 +3,87 @@ const mongoose = require("mongoose");
 const ParentModel = require("../models/ParentModel");
 
 const interests = [
-    "foodie",
-    "fitness lover",
-    "yoga guru",
-    "beauty stylist",
-    "bookworm",
-    "crafty",
-    "green finger",
-    "surfy",
-    "pet lover",
-    "sports fan",
-    "dancer",
-    "music lover",
-    "geek",
-    "social butterfly",
-    "photographer",
-    "gamer",
-    "outdoorsy",
-    "movie goer",
-    "home body",
+  "foodie",
+  "fitness lover",
+  "yoga guru",
+  "beauty stylist",
+  "bookworm",
+  "crafty",
+  "green finger",
+  "surfy",
+  "pet lover",
+  "sports fan",
+  "dancer",
+  "music lover",
+  "geek",
+  "social butterfly",
+  "photographer",
+  "gamer",
+  "outdoorsy",
+  "movie goer",
+  "home body",
 ];
 
 mongoose
-    .connect("mongodb://localhost:27017/kiddyup")
-    .then(() => {
-        console.log("Connected to mongo db");
-        seedDb().then(() => {
-            mongoose.connection.close();
-        });
-    })
-    .catch((error) => {
-        console.log("Mongoose connection failed");
-        console.log(error);
+  .connect("mongodb://localhost:27017/kiddyup")
+  .then(() => {
+    console.log("Connected to mongo db");
+    seedDb().then(() => {
+      mongoose.connection.close();
     });
+  })
+  .catch((error) => {
+    console.log("Mongoose connection failed");
+    console.log(error);
+  });
 
 const seedDb = async () => {
-    await ParentModel.deleteMany({});
+  await ParentModel.deleteMany({});
 
-    const getData = async () => {
-        const response = await fetch(
-            "https://randomuser.me/api/?inc=gender,name,location,gender,email,dob,picture&nat=nz&results=50&noinfo"
-        );
-        const data = await response.json();
-        const profiles = data.results;
-        return profiles;
-    };
+  const getData = async () => {
+    const response = await fetch(
+      "https://randomuser.me/api/?inc=gender,name,location,gender,email,dob,picture&nat=nz&results=50&noinfo"
+    );
+    const data = await response.json();
+    const profiles = data.results;
+    return profiles;
+  };
 
-    const createProfiles = async () => {
-        const profiles = await getData();
-        const arrayOfProfiles = profiles.map((profile) => {
-            return {
-                firstName: profile.name.first,
-                lastName: profile.name.last,
-                parentStatus: profile.gender === "male" ? "papa" : "mama",
-                age: profile.dob.age,
-                email: profile.email,
-                profilePhoto: profile.picture.large,
-                numberChildren: Math.floor(Math.random() * 6),
-                children: [
-                    {
-                        years: Math.floor(Math.random() * 11),
-                        months: Math.floor(Math.random() * 13),
-                    },
-                    {
-                        years: Math.floor(Math.random() * 11),
-                        months: Math.floor(Math.random() * 13),
-                    },
-                ],
-                city: profile.location.city,
-                coordinates: [
-                    parseFloat(profile.location.coordinates.latitude),
-                    parseFloat(profile.location.coordinates.longitude),
-                ],
-                interests: [
-                    interests[Math.floor(Math.random() * interests.length)],
-                    interests[Math.floor(Math.random() * interests.length)],
-                ],
-            };
-        });
+  const createProfiles = async () => {
+    const profiles = await getData();
+    const arrayOfProfiles = profiles.map((profile) => {
+      return {
+        firstName: profile.name.first,
+        lastName: profile.name.last,
+        parentStatus: profile.gender === "male" ? "papa" : "mama",
+        age: profile.dob.age,
+        email: profile.email,
+        profilePhoto: profile.picture.large,
+        numberChildren: Math.floor(Math.random() * 6),
+        children: [
+          {
+            years: Math.floor(Math.random() * 11),
+            months: Math.floor(Math.random() * 13),
+          },
+          {
+            years: Math.floor(Math.random() * 11),
+            months: Math.floor(Math.random() * 13),
+          },
+        ],
+        city: profile.location.city,
+        coordinates: [
+          parseFloat(profile.location.coordinates.latitude),
+          parseFloat(profile.location.coordinates.longitude),
+        ],
+        interests: [
+          interests[Math.floor(Math.random() * interests.length)],
+          interests[Math.floor(Math.random() * interests.length)],
+        ],
+      };
+    });
 
-        await ParentModel.insertMany(arrayOfProfiles);
-    };
+    await ParentModel.insertMany(arrayOfProfiles);
+  };
 
-    await createProfiles();
+  await createProfiles();
 };

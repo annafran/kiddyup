@@ -38,9 +38,10 @@ This project uses the following systems:
 2. Run `npm install` in server
 3. Run `docker-compose up` in server
 4. Connect to mongodb via MongoDB compass (`mongodb://localhost:27017`)
-5. Navigate to client (`cd client`)
-6. Run `npm install` in client
-7. Run `npm start` in client to start the react app
+5. Run `npm run seed` to seed the database
+6. Navigate to client (`cd client`)
+7. Run `npm install` in client
+8. Run `npm start` in client to start the react app
 
 ## Deployed applications
 
