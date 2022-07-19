@@ -5,9 +5,13 @@ Users can search for other parents by list view or by map view. The map view all
 The platform has functionality for a user to enter their profile, including details on their children, their hobbies and location.
 The platform has fetches initial seed data from the randomuser.me API.
 
-## Screenshot of Kiddyup website
+## Screenshot of Kiddyup profile view
 
-![Screenshot of Kiddyup website](kiddyup.png)
+![Screenshot of Kiddyup profile view](kiddyup.png)
+
+## Screenshot of Kiddyup map view
+
+![Screenshot of Kiddyup map view](kiddyup_map_screenshot.png)
 
 ## Dependencies
 
