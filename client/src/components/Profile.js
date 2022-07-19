@@ -82,6 +82,20 @@ const Profile = ({ profile }) => {
               {/* {mapIcon} */}
               {profile.city}
             </Text>
+            {profile.interests.map((interest) => {
+              return (
+                <div>
+                  <Badge
+                    size="md"
+                    color="white"
+                    style={{ backgroundColor: "#345c72" }}
+                    variant="filled"
+                  >
+                    {interest}
+                  </Badge>
+                </div>
+              );
+            })}
             {profile.children.map((child) => {
               return (
                 <div>
@@ -95,20 +109,6 @@ const Profile = ({ profile }) => {
                     leftSection={childIcon}
                   >
                     {renderChild(child)}
-                  </Badge>
-                </div>
-              );
-            })}
-            {profile.interests.map((interest) => {
-              return (
-                <div>
-                  <Badge
-                    size="md"
-                    color="white"
-                    style={{ backgroundColor: "#345c72" }}
-                    variant="filled"
-                  >
-                    {interest}
                   </Badge>
                 </div>
               );
