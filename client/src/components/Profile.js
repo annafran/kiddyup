@@ -126,7 +126,10 @@ const Profile = ({ profile }) => {
             fullWidth
           >
             <Link
-              style={{ textDecoration: "none", color: "#345c72" }}
+              style={{
+                textDecoration: "none",
+                color: "#345c72",
+              }}
               to={`/profiles/${profile.id}`}
             >
               Connect with me
