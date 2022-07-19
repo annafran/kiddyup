@@ -17,7 +17,7 @@ const ProfileList = () => {
   return (
     <>
       <Container size="xl">
-        <Grid justify="center" gutter={0}>
+        <Grid justify="center" gutter={0} mt="3rem">
           {profiles.map((profile) => {
             return (
               <>
