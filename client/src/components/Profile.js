@@ -99,6 +99,20 @@ const Profile = ({ profile }) => {
                 </div>
               );
             })}
+            {profile.interests.map((interest) => {
+              return (
+                <div>
+                  <Badge
+                    size="md"
+                    color="white"
+                    style={{ backgroundColor: "#345c72" }}
+                    variant="filled"
+                  >
+                    {interest}
+                  </Badge>
+                </div>
+              );
+            })}
           </Group>
 
           <Button
