@@ -69,7 +69,7 @@ const Profile = ({ profile }) => {
             position="apart"
             style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
           >
-            <Title style={{ color: "#345c72", fontSize: "1.8rem" }} order={1}>
+            <Title style={{ color: "#345c72", fontSize: "1.5rem" }} order={1}>
               {profile.firstName}
             </Title>
             <Badge
@@ -78,7 +78,7 @@ const Profile = ({ profile }) => {
             >
               {profile.parentStatus}
             </Badge>
-            <Text weight={400}>
+            <Text weight={400} size="xs">
               {/* {mapIcon} */}
               {profile.city}
             </Text>
