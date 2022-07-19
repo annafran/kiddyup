@@ -81,7 +81,7 @@ const AddProfile = () => {
   const nzCitiesArray = getCitiesArray(nzCities);
 
   return (
-    <Box sx={{ maxWidth: 300 }} mx="auto">
+    <Box sx={{ maxWidth: 300 }} mx="auto" mt="2rem">
       <form onSubmit={handleSubmit}>
         <TextInput
           required

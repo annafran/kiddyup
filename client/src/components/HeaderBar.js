@@ -12,7 +12,7 @@ import { useBooleanToggle } from "@mantine/hooks";
 import KiddyupLogo from "./KiddyupLogo";
 import { useNavigate } from "react-router-dom";
 
-const HEADER_HEIGHT = 120;
+const HEADER_HEIGHT = "10vh";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -126,7 +126,7 @@ const HeaderBar = () => {
   ));
 
   return (
-    <Header height={HEADER_HEIGHT} mb={60} className={classes.root}>
+    <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header}>
         <KiddyupLogo />
         <Group spacing={5} className={classes.links}>

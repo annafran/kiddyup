@@ -30,6 +30,7 @@ mongoose
     console.log("Connected to mongo db");
     seedDb().then(() => {
       mongoose.connection.close();
+      console.log("Cleared and seeded database");
     });
   })
   .catch((error) => {
@@ -42,7 +43,7 @@ const seedDb = async () => {
 
   const getData = async () => {
     const response = await fetch(
-      "https://randomuser.me/api/?inc=gender,name,location,gender,email,dob,picture&nat=nz&results=50&noinfo"
+      "https://randomuser.me/api/?inc=gender,name,location,gender,email,dob,picture&results=50&noinfo"
     );
     const data = await response.json();
     const profiles = data.results;
