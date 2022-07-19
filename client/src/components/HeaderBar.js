@@ -16,7 +16,7 @@ const HEADER_HEIGHT = "10vh";
 
 const useStyles = createStyles((theme) => ({
   root: {
-    backgroundColor: "#d4edf4",
+    backgroundColor: "#97D2FB",
     position: "relative",
     zIndex: 1,
   },

@@ -12,12 +12,10 @@ import {
   Center,
 } from "@mantine/core";
 import { MoodKid, MapPin } from "tabler-icons-react";
+import "./Profile.css";
 
 const Profile = ({ profile }) => {
   const theme = useMantineTheme();
-
-  const secondaryColor =
-    theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[7];
 
   const childIcon = (
     <div>
@@ -26,8 +24,7 @@ const Profile = ({ profile }) => {
           variant="filled"
           radius="lg"
           size="m"
-          color="white"
-          style={{ backgroundColor: "#f35a59" }}
+          style={{ color: "#345c72", backgroundColor: "#97D2FB" }}
         >
           <MoodKid size={20} />
         </ThemeIcon>
@@ -35,15 +32,15 @@ const Profile = ({ profile }) => {
     </div>
   );
 
-  const mapIcon = (
-    <div>
-      <Center>
-        <ThemeIcon style={{ color: "black", backgroundColor: "transparent" }}>
-          <MapPin size={15} />
-        </ThemeIcon>
-      </Center>
-    </div>
-  );
+  // const mapIcon = (
+  //   <div>
+  //     <Center>
+  //       <ThemeIcon style={{ color: "black", backgroundColor: "transparent" }}>
+  //         <MapPin size={15} />
+  //       </ThemeIcon>
+  //     </Center>
+  //   </div>
+  // );
 
   const renderChild = (child) => {
     if (child.years === 1) {
@@ -60,64 +57,72 @@ const Profile = ({ profile }) => {
   return (
     <>
       <div style={{ width: 360, margin: "auto" }}>
-        <Card shadow="sm" p="lg" m={16}>
+        <Card shadow="sm" p="lg" m={16} style={{ backgroundColor: "#E6E6EA" }}>
           <Card.Section>
-            <Image src={profile.profilePhoto} alt={profile.firstName} />
+            <Image
+              src={profile.profilePhoto}
+              alt={profile.firstName}
+              p="2rem"
+            />
           </Card.Section>
           <Group
             columns={2}
             position="apart"
             style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
           >
-            <Title style={{ color: "#345c72", fontSize: "1.5rem" }} order={1}>
-              {profile.firstName}
-            </Title>
-            <Badge
-              style={{ color: "#345c72", backgroundColor: "#d4edf4" }}
-              variant="light"
-            >
-              {profile.parentStatus}
-            </Badge>
-            <Text weight={400} size="xs">
-              {/* {mapIcon} */}
-              {profile.city}
-            </Text>
-            {profile.interests.map((interest) => {
-              return (
-                <div>
+            <div className="nameCitySection">
+              <Title style={{ color: "#345c72", fontSize: "1.5rem" }} order={1}>
+                {profile.firstName}
+              </Title>
+              <Badge
+                style={{ color: "#345c72", backgroundColor: "white" }}
+                variant="light"
+              >
+                {profile.parentStatus}
+              </Badge>
+              <Text weight={400} size="xs" className="city">
+                {/* {mapIcon} */}
+                {profile.city}
+              </Text>
+            </div>
+            <div className="interestGrid">
+              {profile.interests.map((interest) => {
+                return (
                   <Badge
                     size="md"
-                    color="white"
                     style={{ backgroundColor: "#345c72" }}
                     variant="filled"
+                    className="interestBadge"
                   >
                     {interest}
                   </Badge>
-                </div>
-              );
-            })}
-            {profile.children.map((child) => {
-              return (
-                <div>
-                  <Badge
-                    sx={{ paddingLeft: 3 }}
-                    size="lg"
-                    radius="xl"
-                    color="white"
-                    style={{ backgroundColor: "#f35a59" }}
-                    variant="filled"
-                    leftSection={childIcon}
-                  >
-                    {renderChild(child)}
-                  </Badge>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+            <div className="childGrid">
+              {profile.children.map((child) => {
+                return (
+                  <div>
+                    <Badge
+                      sx={{ paddingLeft: 3 }}
+                      size="lg"
+                      radius="xl"
+                      style={{ color: "#345c72", backgroundColor: "#97D2FB" }}
+                      variant="filled"
+                      leftSection={childIcon}
+                      className="childBadge"
+                    >
+                      {renderChild(child)}
+                    </Badge>
+                  </div>
+                );
+              })}
+            </div>
           </Group>
 
           <Button
             variant="light"
-            style={{ backgroundColor: "#d4edf4", marginTop: 14 }}
+            style={{ backgroundColor: "white", marginTop: 14 }}
             fullWidth
           >
             <Link

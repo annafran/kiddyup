@@ -1,0 +1,27 @@
+.interestGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: end;
+
+  grid-gap: 0.5rem;
+}
+
+.childGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: start;
+  justify-items: end;
+  grid-gap: 0.5rem;
+}
+.nameCitySection {
+  display: grid;
+  grid-template-columns: min-content min-content min-content;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.city {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
