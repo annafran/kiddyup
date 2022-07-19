@@ -1,21 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
-import { Link } from "react-router-dom";
-import "./Marker.css";
-
-const Marker = ({ image, alt, link }) => {
-  return (
-    <div>
-      <img
-        className="marker"
-        src={image}
-        alt={alt}
-        component={Link}
-        to={link}
-      />
-    </div>
-  );
-};
+import Marker from "./Marker";
 
 const Map = () => {
   const [center, setCenter] = useState({ lat: -40.9006, lng: 174.886 });
