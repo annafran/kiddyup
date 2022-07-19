@@ -51,4 +51,4 @@ This project uses the following systems:
 
 - Logo created on: [Canva](https://www.canva.com/)
 - Favicon created on: [Canva](https://www.canva.com/)
-- Hero image from: [Undraw](https://undraw.co/)
+- Hero image from: [UnDraw](https://undraw.co/)
