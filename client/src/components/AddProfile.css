@@ -1,21 +1,25 @@
 .formGrid {
-    width: 20rem;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 0.8rem;
+  width: 20rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.8rem;
+}
+
+.submitButton:hover {
+  color: #345c72;
 }
 
 @media only screen and (min-width: 48rem) {
-    .formGrid {
-        width: 50rem;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 2rem;
-    }
-    .childrenGrid {
-        grid-column: 1 / 3;
-    }
-    .submitButton {
-        grid-column-start: 1;
-    }
+  .formGrid {
+    width: 50rem;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+  .childrenGrid {
+    grid-column: 1 / 3;
+  }
+  .submitButton {
+    grid-column-start: 1;
+  }
 }

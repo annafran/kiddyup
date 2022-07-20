@@ -7,11 +7,15 @@ The platform has fetches initial seed data from the randomuser.me API.
 
 ## Screenshot of Kiddyup profile view
 
-![Screenshot of Kiddyup profile view](kiddyup.png)
+![Screenshot of Kiddyup profile view](kiddyup-screenshot.png)
 
 ## Screenshot of Kiddyup map view
 
-![Screenshot of Kiddyup map view](kiddyup_map_screenshot.png)
+![Screenshot of Kiddyup map view](kiddyup-map-screenshot.png)
+
+## Screenshot of Kiddyup home view
+
+![Screenshot of Kiddyup home view](kiddyup-home-screenshot.png)
 
 ## Dependencies
 
