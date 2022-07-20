@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { At } from "tabler-icons-react";
+import "./AddProfile.css";
 const nzCities = require("../data/nzCities.json");
 const interestsArray = require("../data/interests.json");
 
@@ -85,8 +86,8 @@ const AddProfile = () => {
   const nzCitiesArray = getCitiesArray(nzCities);
 
   return (
-    <Box sx={{ maxWidth: 300 }} mx="auto" mt="2rem">
-      <form onSubmit={handleSubmit}>
+    <Box mx="auto" mt="2rem">
+      <form onSubmit={handleSubmit} className="formGrid">
         <TextInput
           required
           label="Your first name"
@@ -180,7 +181,7 @@ const AddProfile = () => {
             return interest;
           })}
         />
-        <Group position="center" mt="md">
+        <Group position="left">
           {!isPending && (
             <Button
               type="submit"
@@ -190,7 +191,6 @@ const AddProfile = () => {
                 marginTop: 14,
                 color: "#345c72",
               }}
-              fullWidth
             >
               Submit
             </Button>
@@ -205,7 +205,6 @@ const AddProfile = () => {
                 marginTop: 14,
                 color: "#345c72",
               }}
-              fullWidth
             >
               Signing you up
             </Button>
