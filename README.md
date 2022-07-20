@@ -37,7 +37,6 @@ This project uses the following systems:
 
 - [Prettier](https://prettier.io/)
 - [Stylelint](https://stylelint.io/)
-- [Jest](https://jestjs.io/)
 
 ## Prerequisites
 
