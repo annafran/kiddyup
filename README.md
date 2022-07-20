@@ -17,6 +17,10 @@ The platform has fetches initial seed data from the randomuser.me API.
 
 ![Screenshot of Kiddyup home view](kiddyup-home-screenshot.png)
 
+## Screenshot of Kiddyup form view
+
+![Screenshot of Kiddyup form view](kiddyup-form-screenshot.png)
+
 ## Dependencies
 
 This project uses the following systems:
