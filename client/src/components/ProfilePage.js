@@ -1,13 +1,40 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "./BackButton";
-import { Image, Text } from "@mantine/core";
+import ConnectButton from "./ConnectButton";
+import {
+  Image,
+  Text,
+  Badge,
+  useMantineTheme,
+  ThemeIcon,
+  Center,
+  Group,
+} from "@mantine/core";
+import { MoodKid } from "tabler-icons-react";
+import "./ProfilePage.css";
 
 const ProfilePage = () => {
+  const theme = useMantineTheme();
   const { id } = useParams();
   const [profile, setProfile] = useState({});
   const [isNotFound, setIsNotFound] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  const childIcon = (
+    <div>
+      <Center>
+        <ThemeIcon
+          variant="filled"
+          radius="lg"
+          size="m"
+          style={{ color: "#345c72", backgroundColor: "#95DCDE" }}
+        >
+          <MoodKid size={20} />
+        </ThemeIcon>
+      </Center>
+    </div>
+  );
 
   useEffect(() => {
     const getProfile = async () => {
@@ -38,9 +65,32 @@ const ProfilePage = () => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
+
+  const renderChild = (child) => {
+    if (child.years === 1) {
+      return `${child.years} year`;
+    }
+    if (child.years > 1) {
+      return `${child.years} years`;
+    } else if (child.months === 1) {
+      return `${child.months} month`;
+    }
+    return `${child.months} months`;
+  };
+
   return (
-    <div style={{ width: 240, marginLeft: "auto", marginRight: "auto" }}>
+    <div
+      style={{
+        width: 400,
+        marginTop: "2rem",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}
+      // className="profileGrid"
+    >
+      {/* <div className="profileSectionOne"> */}
       <Text
+        align="center"
         style={{
           color: "#345c72",
           fontSize: "2rem",
@@ -49,7 +99,61 @@ const ProfilePage = () => {
       >
         {profile.firstName}
       </Text>
-      <Image src={profile.profilePhoto} alt={profile.firstName} radius="md" />
+      <Image src={profile.profilePhoto} alt={profile.firstName} radius="sm" />
+      {/* </div> */}
+
+      <Group
+        position="apart"
+        style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
+        // className="profileSectionTwo"
+      >
+        <div className="nameCitySection">
+          <Badge
+            style={{ color: "#345c72", backgroundColor: "white" }}
+            variant="light"
+          >
+            {profile.parentStatus}
+          </Badge>
+          <Text weight={400} size="xs" className="city">
+            {/* {mapIcon} */}
+            {profile.city}
+          </Text>
+        </div>
+        <div className="interestGrid">
+          {profile.interests.map((interest) => {
+            return (
+              <Badge
+                size="md"
+                style={{ backgroundColor: "#345c72" }}
+                variant="filled"
+                className="interestBadge"
+              >
+                {interest}
+              </Badge>
+            );
+          })}
+        </div>
+        <div className="childGrid">
+          {profile.children.map((child) => {
+            return (
+              <div>
+                <Badge
+                  sx={{ paddingLeft: 3 }}
+                  size="lg"
+                  radius="xl"
+                  style={{ color: "#345c72", backgroundColor: "#95DCDE" }}
+                  variant="filled"
+                  leftSection={childIcon}
+                  className="childBadge"
+                >
+                  {renderChild(child)}
+                </Badge>
+              </div>
+            );
+          })}
+        </div>
+      </Group>
+      <ConnectButton />
       <BackButton />
     </div>
   );
