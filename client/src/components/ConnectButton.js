@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Button, createStyles } from "@mantine/core";
 import "./BackButton.css";
 
@@ -18,15 +18,18 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const BackButton = () => {
+const ConnectButton = () => {
   const { classes } = useStyles();
   return (
     <Button mt={14} className={`backButton ${classes.control}`} fullWidth>
-      <Link to="/profiles" className={`backButtonLink ${classes.link}`}>
-        Back to profiles
-      </Link>
+      <a
+        href="mailto: abc@example.com"
+        className={`backButtonLink ${classes.link}`}
+      >
+        Connect with me
+      </a>
     </Button>
   );
 };
 
-export default BackButton;
+export default ConnectButton;

@@ -1,0 +1,8 @@
+@media only screen and (min-width: 48rem) {
+  .profileGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    width: 600;
+  }
+}

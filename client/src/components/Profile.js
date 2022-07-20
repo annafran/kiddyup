@@ -130,9 +130,9 @@ const Profile = ({ profile }) => {
                 textDecoration: "none",
                 color: "#345c72",
               }}
-              to={`/profiles/${profile.id}`}
+              to="/map"
             >
-              Connect with me
+              View on map
             </Link>
           </Button>
         </Card>

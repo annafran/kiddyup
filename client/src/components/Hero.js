@@ -126,10 +126,7 @@ export function Hero() {
                 size="md"
                 className={`getStartedButton ${classes.control}`}
               >
-                <Link
-                  className={`getStartedLink ${classes.link}`}
-                  to="/profiles"
-                >
+                <Link className={`getStartedLink ${classes.link}`} to="/signup">
                   Get started
                 </Link>
               </Button>

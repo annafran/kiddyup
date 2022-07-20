@@ -132,106 +132,109 @@ const AddProfile = () => {
 
   return (
     <Box mx="auto" mt="2rem">
-      <form onSubmit={form.onSubmit(handleSubmit)} className="formGrid">
-        <TextInput
-          required
-          label="Your first name"
-          {...form.getInputProps("firstName")}
-          placeholder="Your first name"
-        />
-        <TextInput
-          required
-          label="Your last name"
-          {...form.getInputProps("lastName")}
-          placeholder="Your last name"
-        />
-        <Select
-          label="Mama or Papa?"
-          placeholder="Pick one"
-          searchable
-          clearable
-          data={[
-            { value: "mama", label: "mama" },
-            { value: "papa", label: "papa" },
-          ]}
-          {...form.getInputProps("parentStatus")}
-        />
-        <NumberInput
-          placeholder="Your age"
-          label="Your age"
-          min={18}
-          {...form.getInputProps("age")}
-          required
-        />
-        <TextInput
-          required
-          label="Your email"
-          {...form.getInputProps("email")}
-          placeholder="Your email"
-          icon={<At size={14} />}
-        />
-        <TextInput
-          required
-          label="Your photo"
-          placeholder="Your profile photo link"
-          {...form.getInputProps("profilePhoto")}
-        />
-        <Select
-          label="Which city do you live in?"
-          placeholder="Pick one"
-          searchable
-          clearable
-          data={nzCitiesArray.map((nzCity) => {
-            return nzCity;
-          })}
-          {...form.getInputProps("city")}
-          // onChange={() => {
-          //   setCoordinates(findCoordinates());
-          // }}
-        />
-        <MultiSelect
-          label="Select your interests"
-          searchable
-          maxSelectedValues={5}
-          placeholder="Choose up to 5 interests"
-          clearable
-          {...form.getInputProps("interests")}
-          data={interestsArray.map((interest) => {
-            return interest;
-          })}
-        />
-        <Box sx={{ maxWidth: 500 }} mx="auto" className="childrenGrid">
-          {fields.length > 0 ? (
-            <Group mb="xs">
-              <Text weight={700} size="sm" sx={{ flex: 1 }}>
-                Children
-              </Text>
+      <form onSubmit={form.onSubmit(handleSubmit)}>
+        <div className="formGrid">
+          <TextInput
+            required
+            label="Your first name"
+            {...form.getInputProps("firstName")}
+            placeholder="Your first name"
+          />
+          <TextInput
+            required
+            label="Your last name"
+            {...form.getInputProps("lastName")}
+            placeholder="Your last name"
+          />
+          <Select
+            label="Mama or Papa?"
+            placeholder="Pick one"
+            searchable
+            clearable
+            data={[
+              { value: "mama", label: "mama" },
+              { value: "papa", label: "papa" },
+            ]}
+            {...form.getInputProps("parentStatus")}
+          />
+          <NumberInput
+            placeholder="Your age"
+            label="Your age"
+            min={18}
+            {...form.getInputProps("age")}
+            required
+          />
+          <TextInput
+            required
+            label="Your email"
+            {...form.getInputProps("email")}
+            placeholder="Your email"
+            icon={<At size={14} />}
+          />
+          <TextInput
+            required
+            label="Your photo"
+            placeholder="Your profile photo link"
+            {...form.getInputProps("profilePhoto")}
+          />
+          <Select
+            label="Which city do you live in?"
+            placeholder="Pick one"
+            searchable
+            clearable
+            data={nzCitiesArray.map((nzCity) => {
+              return nzCity;
+            })}
+            {...form.getInputProps("city")}
+            // onChange={() => {
+            //   setCoordinates(findCoordinates());
+            // }}
+          />
+          <MultiSelect
+            label="Select your interests"
+            searchable
+            maxSelectedValues={5}
+            placeholder="Choose up to 5 interests"
+            clearable
+            {...form.getInputProps("interests")}
+            data={interestsArray.map((interest) => {
+              return interest;
+            })}
+          />
+          <Box sx={{ maxWidth: "100%" }} className="childrenGrid">
+            {fields.length > 0 ? (
+              <Group mb="xs">
+                <Text weight={700} size="sm" sx={{ flex: 1 }}>
+                  Children
+                </Text>
+              </Group>
+            ) : (
+              <Text color="dimmed">You must add at least one child</Text>
+            )}
+            {fields}
+            <Group position="left" mt="md">
+              <Button
+                className={classes.addChild}
+                onClick={() =>
+                  form.addListItem("children", {
+                    years: null,
+                    months: null,
+                    key: randomId(),
+                  })
+                }
+              >
+                Add child
+              </Button>
             </Group>
-          ) : (
-            <Text color="dimmed">You must add at least one child</Text>
-          )}
-          {fields}
-          <Group position="center" mt="md">
-            <Button
-              className={classes.addChild}
-              onClick={() =>
-                form.addListItem("children", {
-                  years: null,
-                  months: null,
-                  key: randomId(),
-                })
-              }
-            >
-              Add child
-            </Button>
-          </Group>
-        </Box>
-        <Group position="left">
+          </Box>
+        </div>
+        <Group position="center" mt="1rem">
           {!isPending && (
             <Button
               radius="xl"
               size="md"
               type="submit"
+              width="10rem"
               className={`submitButton ${classes.control}`}
             >
               Submit profile
