@@ -55,6 +55,7 @@ const AddProfile = () => {
       children: [{ years: years }, { months: months }],
       city: city,
       interests: interests,
+      createdDate: Date.now(),
       // coordinates: [lat, lng],
     };
 
