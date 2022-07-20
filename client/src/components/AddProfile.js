@@ -27,15 +27,19 @@ const AddProfile = () => {
   const [isPending, setIsPending] = useState(false);
 
   const navigate = useNavigate();
-  const [coordinates, setCoordinates] = useState([]);
+  // const [coordinates, setCoordinates] = useState([]);
 
-  const lat = (city) => {
-    return city.lat;
-  };
+  // const cityObj = nzCities.find((city)=> {
+  //   return city.city === city;
+  // })
 
-  const lng = (city) => {
-    return city.lng;
-  };
+  // const lat = (city) => {
+  //   return city.lat;
+  // };
+
+  // const lng = (city) => {
+  //   return city.lng;
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +54,7 @@ const AddProfile = () => {
       children: [{ years: years }, { months: months }],
       city: city,
       interests: interests,
-      coordinates: [lat, lng],
+      // coordinates: [lat, lng],
     };
 
     fetch("http://localhost:5002/profiles", {
@@ -182,7 +186,7 @@ const AddProfile = () => {
               type="submit"
               variant="light"
               style={{
-                backgroundColor: "#97D2FB",
+                backgroundColor: "#95DCDE",
                 marginTop: 14,
                 color: "#345c72",
               }}
@@ -197,7 +201,7 @@ const AddProfile = () => {
               disabled
               variant="light"
               style={{
-                backgroundColor: "#97D2FB",
+                backgroundColor: "#95DCDE",
                 marginTop: 14,
                 color: "#345c72",
               }}

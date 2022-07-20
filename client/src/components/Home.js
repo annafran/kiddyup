@@ -1,12 +1,14 @@
-import { Title } from "@mantine/core";
-import { Image } from "@mantine/core";
-import { Text } from "@mantine/core";
-import father from "../assets/father.svg";
+// import { Title } from "@mantine/core";
+// import { Image } from "@mantine/core";
+// import { Text } from "@mantine/core";
+// import father from "../assets/father.svg";
+import Hero from "../components/Hero";
 
 const Home = () => {
-    return (
-        <>
-            <Title order={3} align="center" mt="4rem" ml="2rem" mr="2rem">
+  return (
+    <>
+      <Hero />
+      {/* <Title order={3} align="center" mt="4rem" ml="2rem" mr="2rem">
                 Are you a mother or father who wants to meet other parents?
             </Title>
             <Image
@@ -18,9 +20,9 @@ const Home = () => {
             />
             <Text size="xl" align="center" mt="4rem" mb="4rem">
                 Search by your location and connect!
-            </Text>
-        </>
-    );
+            </Text> */}
+    </>
+  );
 };
 
 export default Home;

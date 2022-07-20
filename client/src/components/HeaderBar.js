@@ -16,7 +16,7 @@ const HEADER_HEIGHT = "10vh";
 
 const useStyles = createStyles((theme) => ({
   root: {
-    backgroundColor: "#97D2FB",
+    backgroundColor: "#95DCDE",
     position: "relative",
     zIndex: 1,
   },
@@ -62,18 +62,11 @@ const useStyles = createStyles((theme) => ({
     padding: "8px 12px",
     borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+    color: theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
-
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
+      backgroundColor: theme.colors.gray[0],
     },
 
     [theme.fn.smallerThan("sm")]: {
@@ -84,12 +77,7 @@ const useStyles = createStyles((theme) => ({
 
   linkActive: {
     "&, &:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.fn.rgba(theme.colors[theme.primaryColor][9], 0.25)
-          : theme.colors[theme.primaryColor][0],
-      color:
-        theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 3 : 7],
+      backgroundColor: theme.colors.gray[0],
     },
   },
 }));

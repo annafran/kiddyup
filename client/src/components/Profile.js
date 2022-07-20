@@ -24,7 +24,7 @@ const Profile = ({ profile }) => {
           variant="filled"
           radius="lg"
           size="m"
-          style={{ color: "#345c72", backgroundColor: "#97D2FB" }}
+          style={{ color: "#345c72", backgroundColor: "#95DCDE" }}
         >
           <MoodKid size={20} />
         </ThemeIcon>
@@ -107,7 +107,7 @@ const Profile = ({ profile }) => {
                       sx={{ paddingLeft: 3 }}
                       size="lg"
                       radius="xl"
-                      style={{ color: "#345c72", backgroundColor: "#97D2FB" }}
+                      style={{ color: "#345c72", backgroundColor: "#95DCDE" }}
                       variant="filled"
                       leftSection={childIcon}
                       className="childBadge"
