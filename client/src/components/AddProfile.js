@@ -25,26 +25,31 @@ const AddProfile = () => {
   const [months, setMonths] = useState(0);
   const [city, setCity] = useState("");
   const [interests, setInterests] = useState([]);
+  const [coordinates, setCoordinates] = useState([]);
   const [isPending, setIsPending] = useState(false);
 
   const navigate = useNavigate();
-  // const [coordinates, setCoordinates] = useState([]);
 
-  // const cityObj = nzCities.find((city)=> {
-  //   return city.city === city;
-  // })
+  const getCitiesArray = () => {
+    return nzCities.map((nzCityData) => {
+      return nzCityData.city;
+    });
+  };
 
-  // const lat = (city) => {
-  //   return city.lat;
-  // };
+  const nzCitiesArray = getCitiesArray(nzCities);
 
-  // const lng = (city) => {
-  //   return city.lng;
-  // };
+  const findCoordinates = (city) => {
+    const found = nzCities.find((item) => {
+      return item.city === city;
+    });
+
+    return found ? [found.lat, found.lng] : undefined;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsPending(true);
+
     const newProfile = {
       firstName: firstName,
       lastName: lastName,
@@ -52,11 +57,11 @@ const AddProfile = () => {
       age: age,
       email: email,
       profilePhoto: profilePhoto,
-      children: [{ years: years }, { months: months }],
+      children: [{ years: years, months: months }],
       city: city,
       interests: interests,
       createdDate: Date.now(),
-      // coordinates: [lat, lng],
+      coordinates: coordinates,
     };
 
     fetch("http://localhost:5002/profiles", {
@@ -77,14 +82,6 @@ const AddProfile = () => {
 
     navigate("/profiles");
   };
-
-  const getCitiesArray = (nzCities) => {
-    return nzCities.map((nzCityData) => {
-      return nzCityData.city;
-    });
-  };
-
-  const nzCitiesArray = getCitiesArray(nzCities);
 
   return (
     <Box mx="auto" mt="2rem">
@@ -168,7 +165,10 @@ const AddProfile = () => {
             return nzCity;
           })}
           value={city}
-          onChange={setCity}
+          onChange={(value) => {
+            setCity(value);
+            setCoordinates(findCoordinates(value));
+          }}
         />
         <MultiSelect
           value={interests}
