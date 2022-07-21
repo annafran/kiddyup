@@ -25,3 +25,9 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+.profileCard {
+  display: grid;
+}
+.profileButton {
+  align-self: end;
+}

@@ -57,7 +57,13 @@ const Profile = ({ profile }) => {
   return (
     <>
       <div style={{ width: 360, margin: "auto" }}>
-        <Card shadow="sm" p="lg" m={16} style={{ backgroundColor: "#E6E6EA" }}>
+        <Card
+          shadow="sm"
+          p="lg"
+          m={16}
+          style={{ backgroundColor: "#E6E6EA", height: "33rem" }}
+          className="profileCard"
+        >
           <Card.Section>
             <Image
               src={profile.profilePhoto}
@@ -124,6 +130,7 @@ const Profile = ({ profile }) => {
             variant="light"
             style={{ backgroundColor: "white", marginTop: 14 }}
             fullWidth
+            className="profileButton"
           >
             <Link
               style={{
