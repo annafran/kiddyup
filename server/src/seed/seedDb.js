@@ -24,8 +24,10 @@ const interests = [
   "home body",
 ];
 
+const mongoDbUri = process.env.MONGO_URI || "mongodb://localhost:27017/kiddyup";
+
 mongoose
-  .connect("mongodb://localhost:27017/kiddyup")
+  .connect(mongoDbUri)
   .then(() => {
     console.log("Connected to mongo db");
     seedDb().then(() => {
