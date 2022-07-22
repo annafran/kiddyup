@@ -8,7 +8,7 @@ const Map = () => {
   const [profiles, setProfiles] = useState([]);
   useEffect(() => {
     const getProfiles = async () => {
-      const response = await fetch("http://localhost:5002/profiles");
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/profiles`);
       const data = await response.json();
       setProfiles(data);
     };
