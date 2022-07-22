@@ -1,4 +1,4 @@
-import { Image, Grid, Center } from "@mantine/core";
+import { Image, Grid } from "@mantine/core";
 
 const KiddyupLogo = () => {
   return (

@@ -11,7 +11,7 @@ import {
   ThemeIcon,
   Center,
 } from "@mantine/core";
-import { MoodKid, MapPin } from "tabler-icons-react";
+import { MoodKid } from "tabler-icons-react";
 import "./Profile.css";
 
 const Profile = ({ profile }) => {
@@ -31,16 +31,6 @@ const Profile = ({ profile }) => {
       </Center>
     </div>
   );
-
-  // const mapIcon = (
-  //   <div>
-  //     <Center>
-  //       <ThemeIcon style={{ color: "black", backgroundColor: "transparent" }}>
-  //         <MapPin size={15} />
-  //       </ThemeIcon>
-  //     </Center>
-  //   </div>
-  // );
 
   const renderChild = (child) => {
     if (child.years === 1) {
