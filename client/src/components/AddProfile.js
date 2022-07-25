@@ -15,6 +15,7 @@ import { randomId } from "@mantine/hooks";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { At, Trash } from "tabler-icons-react";
+import PhotoUpload from "./PhotoUpload";
 import "./AddProfile.css";
 const nzCities = require("../data/nzCities.json");
 const interestsArray = require("../data/interests.json");
@@ -172,12 +173,13 @@ const AddProfile = () => {
             placeholder="Your email"
             icon={<At size={14} />}
           />
-          <TextInput
+          <PhotoUpload />
+          {/* <TextInput
             required
             label="Your photo"
             placeholder="Your profile photo link"
             {...form.getInputProps("profilePhoto")}
-          />
+          /> */}
           <Select
             label="Which city do you live in?"
             placeholder="Pick one"
