@@ -116,6 +116,7 @@ const AddProfile = () => {
         ...values,
         interests: [values.interests[0], values.interests[1]],
         coordinates: findCoordinates(values.city),
+        children: [values.children[0], values.children[1]],
       }),
     })
       .then((response) => {

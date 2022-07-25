@@ -29,7 +29,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const Profile = ({ profile, setCenter, center }) => {
+const Profile = ({ profile, setCenter }) => {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 

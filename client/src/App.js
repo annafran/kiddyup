@@ -16,12 +16,9 @@ function App() {
           <Route index element={<Home />} />
           <Route
             path="profiles"
-            element={<ProfileList center={center} setCenter={setCenter} />}
+            element={<ProfileList setCenter={setCenter} />}
           />
-          <Route
-            path="map"
-            element={<Map center={center} setCenter={setCenter} />}
-          />
+          <Route path="map" element={<Map center={center} />} />
           <Route path="signup" element={<AddProfile />} />
           <Route path="profiles/:id" element={<ProfilePage />} />
         </Route>
