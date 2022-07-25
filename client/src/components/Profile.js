@@ -11,12 +11,27 @@ import {
   ThemeIcon,
   Center,
   SimpleGrid,
+  createStyles,
 } from "@mantine/core";
 import { MoodKid } from "tabler-icons-react";
 import "./Profile.css";
 
+const useStyles = createStyles((theme) => ({
+  control: {
+    backgroundColor: "white",
+    "&:hover": {
+      backgroundColor: "#95DCDE",
+    },
+    marginTop: 14,
+    [theme.fn.smallerThan("xs")]: {
+      flex: 1,
+    },
+  },
+}));
+
 const Profile = ({ profile, setCenter, center }) => {
   const theme = useMantineTheme();
+  const { classes } = useStyles();
 
   const handleClickMap = () => {
     setCenter(profile.coordinates);
@@ -123,12 +138,7 @@ const Profile = ({ profile, setCenter, center }) => {
             </div>
           </Group>
           <SimpleGrid cols={2}>
-            <Button
-              variant="light"
-              style={{ backgroundColor: "white", marginTop: 14 }}
-              fullWidth
-              className="profileButton"
-            >
+            <Button className={`profileButton ${classes.control}`} fullWidth>
               <Link
                 style={{
                   textDecoration: "none",
@@ -136,22 +146,19 @@ const Profile = ({ profile, setCenter, center }) => {
                 }}
                 to="/map"
                 onClick={handleClickMap}
+                className="profileLink"
               >
                 View on map
               </Link>
             </Button>
-            <Button
-              variant="light"
-              style={{ backgroundColor: "white", marginTop: 14 }}
-              fullWidth
-              className="profileButton"
-            >
+            <Button fullWidth className={`profileButton ${classes.control}`}>
               <Link
                 style={{
                   textDecoration: "none",
                   color: "#345c72",
                 }}
                 to={`/profiles/${profile.id}`}
+                className="profileLink"
               >
                 View profile
               </Link>

@@ -31,3 +31,6 @@
 .profileButton {
   align-self: end;
 }
+.profileButton:hover .profileLink {
+  color: #495057;
+}
