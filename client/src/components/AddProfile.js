@@ -153,6 +153,7 @@ const AddProfile = () => {
             placeholder="Pick one"
             searchable
             clearable
+            required
             data={[
               { value: "mama", label: "mama" },
               { value: "papa", label: "papa" },
@@ -175,8 +176,8 @@ const AddProfile = () => {
           />
           <TextInput
             required
-            label="Your photo"
-            placeholder="Your profile photo - must be a url link for image"
+            label="Your photo url"
+            placeholder="Your profile photo - must be link to image"
             {...form.getInputProps("profilePhoto")}
           />
           <Select
@@ -184,6 +185,7 @@ const AddProfile = () => {
             placeholder="Pick one"
             searchable
             clearable
+            required
             data={nzCitiesArray.map((nzCity) => {
               return nzCity;
             })}
@@ -195,6 +197,7 @@ const AddProfile = () => {
             maxSelectedValues={5}
             placeholder="Choose up to 5 interests"
             clearable
+            required
             {...form.getInputProps("interests")}
             data={interestsArray.map((interest) => {
               return interest;
