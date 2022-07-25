@@ -10,6 +10,7 @@ import {
   Title,
   ThemeIcon,
   Center,
+  SimpleGrid,
 } from "@mantine/core";
 import { MoodKid } from "tabler-icons-react";
 import "./Profile.css";
@@ -17,7 +18,7 @@ import "./Profile.css";
 const Profile = ({ profile, setCenter, center }) => {
   const theme = useMantineTheme();
 
-  const handleClick = () => {
+  const handleClickMap = () => {
     setCenter(profile.coordinates);
   };
 
@@ -121,24 +122,41 @@ const Profile = ({ profile, setCenter, center }) => {
               })}
             </div>
           </Group>
-
-          <Button
-            variant="light"
-            style={{ backgroundColor: "white", marginTop: 14 }}
-            fullWidth
-            className="profileButton"
-          >
-            <Link
-              style={{
-                textDecoration: "none",
-                color: "#345c72",
-              }}
-              to="/map"
-              onClick={handleClick}
+          <SimpleGrid cols={2}>
+            <Button
+              variant="light"
+              style={{ backgroundColor: "white", marginTop: 14 }}
+              fullWidth
+              className="profileButton"
             >
-              View on map
-            </Link>
-          </Button>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "#345c72",
+                }}
+                to="/map"
+                onClick={handleClickMap}
+              >
+                View on map
+              </Link>
+            </Button>
+            <Button
+              variant="light"
+              style={{ backgroundColor: "white", marginTop: 14 }}
+              fullWidth
+              className="profileButton"
+            >
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "#345c72",
+                }}
+                to={`/profiles/${profile.id}`}
+              >
+                View profile
+              </Link>
+            </Button>
+          </SimpleGrid>
         </Card>
       </div>
     </>
