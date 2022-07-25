@@ -6,6 +6,14 @@
   row-gap: 0.8rem;
 }
 
+.buttonContainer {
+  width: 20rem;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
 .submitButton:hover {
   color: #345c72;
 }

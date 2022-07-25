@@ -28,6 +28,7 @@ const useStyles = createStyles((theme) => ({
     color: "#345c72",
   },
   control: {
+    width: "80%",
     backgroundColor: "#345c72",
     "&:hover": {
       backgroundColor: "#95DCDE",
@@ -228,13 +229,12 @@ const AddProfile = () => {
             </Group>
           </Box>
         </div>
-        <Group position="center" mt="1rem">
+        <Box className="buttonContainer">
           {!isPending && (
             <Button
               radius="xl"
               size="md"
               type="submit"
-              width="10rem"
               className={`submitButton ${classes.control}`}
             >
               Submit profile
@@ -251,7 +251,7 @@ const AddProfile = () => {
               Signing you up
             </Button>
           )}
-        </Group>
+        </Box>
       </form>
     </Box>
   );
