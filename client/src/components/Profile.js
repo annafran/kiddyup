@@ -11,7 +11,7 @@ import {
   ThemeIcon,
   Center,
 } from "@mantine/core";
-import { MoodKid, SortDescendingLetters } from "tabler-icons-react";
+import { MoodKid } from "tabler-icons-react";
 import "./Profile.css";
 
 const Profile = ({ profile, setCenter, center }) => {
