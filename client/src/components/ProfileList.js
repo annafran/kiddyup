@@ -3,7 +3,7 @@ import { Loader } from "@mantine/core";
 import { Container, Grid, Text } from "@mantine/core";
 import Profile from "./Profile";
 
-const ProfileList = () => {
+const ProfileList = ({ center, setCenter }) => {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -43,7 +43,12 @@ const ProfileList = () => {
             return (
               <>
                 <Grid.Col style={{ minWidth: 360, maxWidth: 360 }}>
-                  <Profile key={profile.id} profile={profile} />
+                  <Profile
+                    key={profile.id}
+                    profile={profile}
+                    center={center}
+                    setCenter={setCenter}
+                  />
                 </Grid.Col>
               </>
             );

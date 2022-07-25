@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
 
-const Map = () => {
-  const [center] = useState({ lat: -40.9006, lng: 174.886 });
-  const [zoom] = useState(1);
+const Map = ({ center, setCenter }) => {
+  // const [center] = useState({ lat: -40.9006, lng: 174.886 });
+  const [zoom] = useState(5);
   const [profiles, setProfiles] = useState([]);
   useEffect(() => {
     const getProfiles = async () => {

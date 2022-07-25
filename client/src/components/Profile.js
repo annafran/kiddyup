@@ -11,11 +11,15 @@ import {
   ThemeIcon,
   Center,
 } from "@mantine/core";
-import { MoodKid } from "tabler-icons-react";
+import { MoodKid, SortDescendingLetters } from "tabler-icons-react";
 import "./Profile.css";
 
-const Profile = ({ profile }) => {
+const Profile = ({ profile, setCenter, center }) => {
   const theme = useMantineTheme();
+
+  const handleClick = () => {
+    setCenter(profile.coordinates);
+  };
 
   const childIcon = (
     <div>
@@ -130,6 +134,7 @@ const Profile = ({ profile }) => {
                 color: "#345c72",
               }}
               to="/map"
+              onClick={handleClick}
             >
               View on map
             </Link>
