@@ -114,6 +114,7 @@ const AddProfile = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...values,
+        interests: [values.interests[0], values.interests[1]],
         coordinates: findCoordinates(values.city),
       }),
     })
@@ -175,7 +176,7 @@ const AddProfile = () => {
           <TextInput
             required
             label="Your photo"
-            placeholder="Your profile photo link"
+            placeholder="Your profile photo - must be a url link for image"
             {...form.getInputProps("profilePhoto")}
           />
           <Select
