@@ -10,6 +10,7 @@ import {
   ThemeIcon,
   Center,
   Group,
+  SimpleGrid,
 } from "@mantine/core";
 import { MoodKid } from "tabler-icons-react";
 import "./ProfilePage.css";
@@ -88,75 +89,68 @@ const ProfilePage = () => {
         marginLeft: "auto",
         marginRight: "auto",
       }}
-      // className="profileGrid"
     >
-      {/* <div className="profileSectionOne"> */}
       <Text
         align="center"
         style={{
           color: "#345c72",
-          fontSize: "2rem",
+          fontSize: "3rem",
           fontWeight: 700,
         }}
       >
-        {profile.firstName}
+        {profile.firstName} {profile.lastName}
       </Text>
-      <Image src={profile.profilePhoto} alt={profile.firstName} radius="sm" />
-      {/* </div> */}
+      <Image
+        src={profile.profilePhoto}
+        alt={profile.firstName}
+        radius="sm"
+        mb="2rem"
+        mt="2rem"
+      />
 
-      <Group
-        position="apart"
-        style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
-        // className="profileSectionTwo"
-      >
-        <div className="nameCitySection">
-          <Badge
-            style={{ color: "#345c72", backgroundColor: "white" }}
-            variant="light"
-          >
+      <Group position="apart" mb="1rem" mt="1rem">
+        <SimpleGrid cols={1}>
+          <Badge size="md" style={{ color: "#345c72" }}>
             {profile.parentStatus}
           </Badge>
-          <Text weight={400} size="xs" className="city">
-            {/* {mapIcon} */}
+          <Text weight={400} size="sm" className="city">
             {profile.city}
           </Text>
-        </div>
-        <div className="interestGrid">
+        </SimpleGrid>
+        <SimpleGrid cols={1}>
           {profile.interests.map((interest) => {
             return (
               <Badge
                 size="md"
                 style={{ backgroundColor: "#345c72" }}
                 variant="filled"
-                className="interestBadge"
               >
                 {interest}
               </Badge>
             );
           })}
-        </div>
-        <div className="childGrid">
+        </SimpleGrid>
+        <SimpleGrid cols={1}>
           {profile.children.map((child) => {
             return (
-              <div>
-                <Badge
-                  sx={{ paddingLeft: 3 }}
-                  size="lg"
-                  radius="xl"
-                  style={{ color: "#345c72", backgroundColor: "#95DCDE" }}
-                  variant="filled"
-                  leftSection={childIcon}
-                  className="childBadge"
-                >
-                  {renderChild(child)}
-                </Badge>
-              </div>
+              <Badge
+                sx={{ paddingLeft: 3 }}
+                size="lg"
+                radius="xl"
+                style={{ color: "#345c72", backgroundColor: "#95DCDE" }}
+                variant="filled"
+                leftSection={childIcon}
+              >
+                {renderChild(child)}
+              </Badge>
             );
           })}
-        </div>
+        </SimpleGrid>
       </Group>
-      <ConnectButton />
-      <BackButton />
+      <SimpleGrid cols={2}>
+        <ConnectButton />
+        <BackButton />
+      </SimpleGrid>
     </div>
   );
 };
