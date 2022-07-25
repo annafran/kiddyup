@@ -59,6 +59,8 @@ const Profile = ({ profile }) => {
               src={profile.profilePhoto}
               alt={profile.firstName}
               p="2rem"
+              fit="cover"
+              height="264px"
             />
           </Card.Section>
           <Group
