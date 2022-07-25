@@ -6,7 +6,6 @@ import {
   Image,
   Text,
   Badge,
-  useMantineTheme,
   ThemeIcon,
   Center,
   Group,
@@ -16,7 +15,6 @@ import { MoodKid } from "tabler-icons-react";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
-  const theme = useMantineTheme();
   const { id } = useParams();
   const [profile, setProfile] = useState({});
   const [isNotFound, setIsNotFound] = useState(false);
