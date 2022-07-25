@@ -187,9 +187,6 @@ const AddProfile = () => {
               return nzCity;
             })}
             {...form.getInputProps("city")}
-            // onChange={() => {
-            //   setCoordinates(findCoordinates());
-            // }}
           />
           <MultiSelect
             label="Select your interests"
