@@ -80,14 +80,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div
-      style={{
-        width: 400,
-        marginTop: "2rem",
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
-    >
+    <div className="profileContainer">
       <Text
         align="center"
         style={{
@@ -105,7 +98,6 @@ const ProfilePage = () => {
         mb="2rem"
         mt="2rem"
       />
-
       <Group position="apart" mb="1rem" mt="1rem">
         <SimpleGrid cols={1}>
           <Badge size="md" style={{ color: "#345c72" }}>
