@@ -56,7 +56,7 @@ This project uses the following systems:
 
 ## Deployed applications
 
-- [Kiddyup](http://......) - to be updated once deployed
+- [Kiddyup](https://kiddyup.netlify.app/)
 
 ## Citations
 
