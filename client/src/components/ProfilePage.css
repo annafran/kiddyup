@@ -2,9 +2,23 @@
   width: 80%;
   margin: 2rem auto;
 }
+.profileName {
+  color: #345c72;
+  font-size: 2rem;
+  font-weight: 700;
+}
 
 @media only screen and (min-width: 48rem) {
   .profileContainer {
-    width: 20%;
+    width: 50%;
+  }
+  .profileName {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (min-width: 64rem) {
+  .profileContainer {
+    width: 30rem;
   }
 }

@@ -81,14 +81,7 @@ const ProfilePage = () => {
 
   return (
     <div className="profileContainer">
-      <Text
-        align="center"
-        style={{
-          color: "#345c72",
-          fontSize: "3rem",
-          fontWeight: 700,
-        }}
-      >
+      <Text align="center" className="profileName">
         {profile.firstName} {profile.lastName}
       </Text>
       <Image
