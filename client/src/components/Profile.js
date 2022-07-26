@@ -16,16 +16,17 @@ import {
 import { MoodKid } from "tabler-icons-react";
 import "./Profile.css";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   control: {
     backgroundColor: "white",
+    color: "#345c72",
     "&:hover": {
       backgroundColor: "#95DCDE",
     },
     marginTop: 14,
-    [theme.fn.smallerThan("xs")]: {
-      flex: 1,
-    },
+  },
+  link: {
+    textDecoration: "none",
   },
 }));
 
@@ -138,31 +139,17 @@ const Profile = ({ profile, setCenter }) => {
             </div>
           </Group>
           <SimpleGrid cols={2}>
-            <Button className={`profileButton ${classes.control}`} fullWidth>
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "#345c72",
-                }}
-                to="/map"
-                onClick={handleClickMap}
-                className="profileLink"
-              >
+            <Link className={classes.link} to="/map" onClick={handleClickMap}>
+              <Button className={`profileButton ${classes.control}`} fullWidth>
                 View on map
-              </Link>
-            </Button>
-            <Button fullWidth className={`profileButton ${classes.control}`}>
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "#345c72",
-                }}
-                to={`/profiles/${profile.id}`}
-                className="profileLink"
-              >
+              </Button>
+            </Link>
+
+            <Link className={classes.link} to={`/profiles/${profile.id}`}>
+              <Button fullWidth className={`profileButton ${classes.control}`}>
                 View profile
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </SimpleGrid>
         </Card>
       </div>

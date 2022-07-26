@@ -13,7 +13,6 @@ import {
 import { Link } from "react-router-dom";
 import { Check } from "tabler-icons-react";
 import father from "../assets/father.svg";
-import "./Hero.css";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -46,17 +45,14 @@ const useStyles = createStyles((theme) => ({
 
   control: {
     backgroundColor: "#345c72",
+    color: "white",
     "&:hover": {
       backgroundColor: "#95DCDE",
+      color: "#495057",
     },
     [theme.fn.smallerThan("xs")]: {
       flex: 1,
     },
-  },
-
-  link: {
-    textDecoration: "none",
-    color: "white",
   },
 
   image: {
@@ -121,15 +117,11 @@ export function Hero() {
             </List>
 
             <Group mt={30}>
-              <Button
-                radius="xl"
-                size="md"
-                className={`getStartedButton ${classes.control}`}
-              >
-                <Link className={`getStartedLink ${classes.link}`} to="/signup">
+              <Link to="/signup">
+                <Button radius="xl" size="md" className={classes.control}>
                   Get started
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </Group>
           </div>
           <Image src={father} className={classes.image} />
