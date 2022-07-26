@@ -117,9 +117,6 @@ const ProfilePage = () => {
           {profile.children.map((child) => {
             return (
               <Badge
-                sx={{ paddingLeft: 3 }}
-                size="lg"
-                radius="xl"
                 style={{ color: "#345c72", backgroundColor: "#95DCDE" }}
                 variant="filled"
                 leftSection={childIcon}
