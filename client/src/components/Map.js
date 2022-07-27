@@ -3,7 +3,6 @@ import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
 
 const Map = ({ center }) => {
-  // const [center] = useState({ lat: -40.9006, lng: 174.886 });
   const [zoom] = useState(5);
   const [profiles, setProfiles] = useState([]);
   useEffect(() => {
