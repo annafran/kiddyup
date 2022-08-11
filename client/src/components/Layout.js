@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import HeaderBar from "./HeaderBar";
 
-const Layout = () => {
+const Layout = ({ active, setActive }) => {
   return (
     <>
-      <HeaderBar />
+      <HeaderBar active={active} setActive={setActive} />
       <Outlet />
     </>
   );

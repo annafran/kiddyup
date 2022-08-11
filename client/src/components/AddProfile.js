@@ -39,7 +39,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const AddProfile = () => {
+const AddProfile = ({ setActive }) => {
   const { classes } = useStyles();
   const form = useForm({
     initialValues: {
@@ -249,6 +249,7 @@ const AddProfile = () => {
               radius="xl"
               size="md"
               className={`submitButton ${classes.control}`}
+              onClick={() => setActive("/profiles")}
             >
               Signing you up
             </Button>

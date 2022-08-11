@@ -63,6 +63,10 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  themeIcon: {
+    backgroundColor: "#f46530",
+  },
+
   highlight: {
     position: "relative",
     backgroundColor: "#EAF6FA   ",
@@ -71,7 +75,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function Hero() {
+export function Hero({ setActive }) {
   const { classes } = useStyles();
   return (
     <div>
@@ -94,11 +98,7 @@ export function Hero() {
               spacing="sm"
               size="sm"
               icon={
-                <ThemeIcon
-                  size={20}
-                  radius="xl"
-                  style={{ backgroundColor: "#f46530" }}
-                >
+                <ThemeIcon className={classes.themeIcon} size={20} radius="xl">
                   <Check size={12} />
                 </ThemeIcon>
               }
@@ -118,7 +118,12 @@ export function Hero() {
 
             <Group mt={30}>
               <Link to="/signup">
-                <Button radius="xl" size="md" className={classes.control}>
+                <Button
+                  radius="xl"
+                  size="md"
+                  className={classes.control}
+                  onClick={() => setActive("/signup")}
+                >
                   Get started
                 </Button>
               </Link>
