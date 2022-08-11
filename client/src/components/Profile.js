@@ -30,7 +30,7 @@ const useStyles = createStyles(() => ({
   },
 }));
 
-const Profile = ({ profile, setCenter }) => {
+const Profile = ({ profile, setCenter, setActive }) => {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
@@ -140,7 +140,11 @@ const Profile = ({ profile, setCenter }) => {
           </Group>
           <SimpleGrid cols={2}>
             <Link className={classes.link} to="/map" onClick={handleClickMap}>
-              <Button className={`profileButton ${classes.control}`} fullWidth>
+              <Button
+                className={`profileButton ${classes.control}`}
+                onClick={() => setActive("/map")}
+                fullWidth
+              >
                 View on map
               </Button>
             </Link>

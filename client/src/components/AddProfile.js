@@ -39,7 +39,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const AddProfile = () => {
+const AddProfile = ({ setActive }) => {
   const { classes } = useStyles();
   const form = useForm({
     initialValues: {
@@ -238,6 +238,7 @@ const AddProfile = () => {
               size="md"
               type="submit"
               className={`submitButton ${classes.control}`}
+              onClick={() => setActive("/profiles")}
             >
               Submit profile
             </Button>

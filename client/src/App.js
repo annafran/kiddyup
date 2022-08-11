@@ -7,19 +7,35 @@ import Hero from "./components/Hero";
 import ProfilePage from "./components/ProfilePage";
 import Map from "./components/Map";
 
+const links = [
+  { link: "/", label: "Home" },
+  { link: "/profiles", label: "Profiles" },
+  { link: "/map", label: "Map of profiles" },
+  { link: "/signup", label: "Sign up" },
+];
+
 function App() {
   const [center, setCenter] = useState({ lat: -40.9006, lng: 174.886 });
+  const [active, setActive] = useState(links[0].link);
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Hero />} />
+        <Route
+          path="/"
+          element={<Layout active={active} setActive={setActive} />}
+        >
+          <Route index element={<Hero setActive={setActive} />} />
           <Route
             path="profiles"
-            element={<ProfileList setCenter={setCenter} />}
+            element={
+              <ProfileList setCenter={setCenter} setActive={setActive} />
+            }
           />
-          <Route path="map" element={<Map center={center} />} />
-          <Route path="signup" element={<AddProfile />} />
+          <Route
+            path="map"
+            element={<Map center={center} setActive={setActive} />}
+          />
+          <Route path="signup" element={<AddProfile setActive={setActive} />} />
           <Route path="profiles/:id" element={<ProfilePage />} />
         </Route>
       </Routes>

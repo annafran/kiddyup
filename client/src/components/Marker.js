@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Avatar } from "@mantine/core";
 import "./Marker.css";
 
-const Marker = ({ image, alt, link }) => {
+const Marker = ({ image, alt, link, setActive }) => {
   return (
     <Avatar
       className="marker"
@@ -10,6 +10,7 @@ const Marker = ({ image, alt, link }) => {
       alt={alt}
       component={Link}
       to={link}
+      onClick={() => setActive("/profiles")}
     />
   );
 };

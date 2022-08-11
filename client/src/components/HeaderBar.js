@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   createStyles,
   Header,
@@ -83,7 +83,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const HeaderBar = () => {
+const HeaderBar = ({ active, setActive }) => {
   const navigate = useNavigate();
   const links = [
     { link: "/", label: "Home" },
@@ -93,7 +93,7 @@ const HeaderBar = () => {
   ];
 
   const [opened, toggleOpened] = useBooleanToggle(false);
-  const [active, setActive] = useState(links[0].link);
+  // const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
 
-const Map = ({ center }) => {
+const Map = ({ center, setActive }) => {
   const [zoom] = useState(5);
   const [profiles, setProfiles] = useState([]);
   useEffect(() => {
@@ -31,6 +31,7 @@ const Map = ({ center }) => {
               image={profile.profilePhoto}
               alt={profile.firstName}
               link={`/profiles/${profile.id}`}
+              setActive={setActive}
             />
           );
         })}
