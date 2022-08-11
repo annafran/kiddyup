@@ -3,7 +3,7 @@ import { useState } from "react";
 import ProfileList from "./components/ProfileList";
 import AddProfile from "./components/AddProfile";
 import Layout from "./components/Layout";
-import Home from "./components/Home";
+import Hero from "./components/Hero";
 import ProfilePage from "./components/ProfilePage";
 import Map from "./components/Map";
 
@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Hero />} />
           <Route
             path="profiles"
             element={<ProfileList setCenter={setCenter} />}
