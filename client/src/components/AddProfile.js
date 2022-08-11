@@ -238,6 +238,7 @@ const AddProfile = ({ setActive }) => {
               size="md"
               type="submit"
               className={`submitButton ${classes.control}`}
+              onClick={() => setActive("/profiles")}
             >
               Submit profile
             </Button>
@@ -249,7 +250,6 @@ const AddProfile = ({ setActive }) => {
               radius="xl"
               size="md"
               className={`submitButton ${classes.control}`}
-              onClick={() => setActive("/profiles")}
             >
               Signing you up
             </Button>

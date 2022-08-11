@@ -27,9 +27,14 @@ function App() {
           <Route index element={<Hero setActive={setActive} />} />
           <Route
             path="profiles"
-            element={<ProfileList setCenter={setCenter} />}
+            element={
+              <ProfileList setCenter={setCenter} setActive={setActive} />
+            }
           />
-          <Route path="map" element={<Map center={center} />} />
+          <Route
+            path="map"
+            element={<Map center={center} setActive={setActive} />}
+          />
           <Route path="signup" element={<AddProfile setActive={setActive} />} />
           <Route path="profiles/:id" element={<ProfilePage />} />
         </Route>
