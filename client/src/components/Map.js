@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from "react";
-import GoogleMapReact from "google-map-react";
-import Marker from "./Marker";
+import { useNavigate } from "react-router-dom";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import "./Map.css";
+import "leaflet/dist/leaflet.css";
+
+const GetIcon = (profilePhoto) => {
+  return L.icon({
+    iconUrl: profilePhoto,
+    iconSize: [40, 40],
+    popupAnchor: [-10, -18],
+    className: "leaflet-div-icon",
+  });
+};
+
+const accessToken = process.env.REACT_APP_MAPBOX_KEY;
 
 const Map = ({ center, setActive }) => {
-  const [zoom] = useState(5);
+  const navigate = useNavigate();
   const [profiles, setProfiles] = useState([]);
   useEffect(() => {
     const getProfiles = async () => {
@@ -14,28 +28,49 @@ const Map = ({ center, setActive }) => {
     getProfiles();
   }, []);
 
+  const handleClick = (linkId) => {
+    setActive("/profiles");
+    navigate(`/profiles/${linkId}`);
+  };
+
   return (
-    <div style={{ height: "90vh", width: "100%" }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{
-          key: process.env.REACT_APP_API_KEY,
-        }}
-        defaultCenter={center}
-        defaultZoom={zoom}
+    <div>
+      <MapContainer
+        center={center}
+        zoom={4}
+        scrollWheelZoom={false}
+        style={{ height: "90vh", width: "100%" }}
       >
-        {profiles.map((profile) => {
+        <TileLayer
+          attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+          url={`https://api.mapbox.com/styles/v1/annafran1/cl6oig57w003014odi62akas5/tiles/256/{z}/{x}/{y}@2x?access_token=${accessToken}`}
+        />
+        {profiles.map((profile, index) => {
           return (
             <Marker
-              lat={profile.coordinates[0]}
-              lng={profile.coordinates[1]}
-              image={profile.profilePhoto}
-              alt={profile.firstName}
-              link={`/profiles/${profile.id}`}
-              setActive={setActive}
-            />
+              position={[profile.coordinates[0], profile.coordinates[1]]}
+              icon={GetIcon(profile.profilePhoto)}
+              key={index}
+              eventHandlers={{
+                mouseover: (e) => {
+                  e.target.openPopup();
+                },
+              }}
+            >
+              <Popup>
+                Hi I'm <strong>{profile.firstName}</strong> from{" "}
+                <strong>{profile.city}</strong>. <br />
+                <button
+                  className="popupButton"
+                  onClick={() => handleClick(profile.id)}
+                >
+                  Click to view my profile
+                </button>
+              </Popup>
+            </Marker>
           );
         })}
-      </GoogleMapReact>
+      </MapContainer>
     </div>
   );
 };

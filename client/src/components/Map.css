@@ -1,0 +1,22 @@
+.leaflet-div-icon {
+  border-radius: 100%;
+  object-fit: cover;
+}
+/* div.leaflet-div-icon:hover {
+  border: 2px solid red;
+} */
+.popupButton {
+  border: none;
+  color: white;
+  border-radius: 10px;
+  background-color: #345c72;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+.popupButton:hover {
+  color: #495057;
+  background-color: #95dcde;
+}
