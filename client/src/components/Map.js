@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import "./MarkerIcon.css";
+import "./Map.css";
 import "leaflet/dist/leaflet.css";
 
 const GetIcon = (profilePhoto) => {
   return L.icon({
     iconUrl: profilePhoto,
     iconSize: [40, 40],
+    popupAnchor: [-10, -18],
     className: "leaflet-div-icon",
   });
 };
