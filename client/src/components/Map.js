@@ -64,7 +64,7 @@ const Map = ({ center, setActive }) => {
                   className="popupButton"
                   onClick={() => handleClick(profile.id)}
                 >
-                  Click to view my profile.
+                  Click to view my profile
                 </button>
               </Popup>
             </Marker>
