@@ -50,5 +50,8 @@
   "devDependencies": {
     "jest": "^28.1.0",
     "nodemon": "^2.0.16"
+  },
+  "overrides": {
+    "autoprefixer": "10.4.5"
   }
 }
