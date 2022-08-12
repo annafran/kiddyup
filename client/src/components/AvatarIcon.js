@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Avatar } from "@mantine/core";
-import "./Marker.css";
+import "./AvatarIcon.css";
 
-const Marker = ({ image, alt, link, setActive }) => {
+const AvatarIcon = ({ image, alt, link, setActive }) => {
   return (
     <Avatar
       className="marker"
@@ -15,4 +15,4 @@ const Marker = ({ image, alt, link, setActive }) => {
   );
 };
 
-export default Marker;
+export default AvatarIcon;
