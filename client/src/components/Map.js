@@ -50,14 +50,19 @@ const Map = ({ center, setActive }) => {
               position={[profile.coordinates[0], profile.coordinates[1]]}
               icon={GetIcon(profile.profilePhoto)}
               key={index}
+              eventHandlers={{
+                mouseover: (e) => {
+                  e.target.openPopup();
+                },
+              }}
             >
-              <Popup className="popup">
+              <Popup>
+                Hi I'm <strong>{profile.firstName}</strong> from{" "}
+                <strong>{profile.city}</strong>. <br />
                 <button
                   className="popupButton"
                   onClick={() => handleClick(profile.id)}
                 >
-                  Hi I'm <strong>{profile.firstName}</strong> from{" "}
-                  <strong>{profile.city}</strong>. <br />
                   Click to view my profile.
                 </button>
               </Popup>
