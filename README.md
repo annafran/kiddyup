@@ -29,7 +29,9 @@ This project uses the following systems:
 - [React](https://github.com/facebook/react)
 - [React Router](https://reactrouter.com/docs/en/v6)
 - [Mantine](https://mantine.dev/)
-- [Google Map React](https://www.npmjs.com/package/google-map-react)
+- [Mapbox](https://www.mapbox.com/)
+- [Leaflet](https://leafletjs.com/)
+- [React Leaflet](https://react-leaflet.js.org/)
 - [Mongoose](https://mongoosejs.com/)
 - [Express](https://expressjs.com/)
 
