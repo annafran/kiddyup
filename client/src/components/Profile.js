@@ -129,26 +129,38 @@ const Profile = ({ profile, setCenter, setActive }) => {
                             </Badge>
                         </div>
                         <div className="childGrid">
-                            {profile.children.map((child) => {
-                                return (
-                                    <div>
-                                        <Badge
-                                            sx={{ paddingLeft: 3 }}
-                                            size="lg"
-                                            radius="xl"
-                                            style={{
-                                                color: "#345c72",
-                                                backgroundColor: "#95DCDE",
-                                            }}
-                                            variant="filled"
-                                            leftSection={childIcon}
-                                            className="childBadge"
-                                        >
-                                            {renderChild(child)}
-                                        </Badge>
-                                    </div>
-                                );
-                            })}
+                            <div>
+                                <Badge
+                                    sx={{ paddingLeft: 3 }}
+                                    size="lg"
+                                    radius="xl"
+                                    style={{
+                                        color: "#345c72",
+                                        backgroundColor: "#95DCDE",
+                                    }}
+                                    variant="filled"
+                                    leftSection={childIcon}
+                                    className="childBadge"
+                                >
+                                    {renderChild(profile.children[0])}
+                                </Badge>
+                            </div>
+                            <div>
+                                <Badge
+                                    sx={{ paddingLeft: 3 }}
+                                    size="lg"
+                                    radius="xl"
+                                    style={{
+                                        color: "#345c72",
+                                        backgroundColor: "#95DCDE",
+                                    }}
+                                    variant="filled"
+                                    leftSection={childIcon}
+                                    className="childBadge"
+                                >
+                                    {renderChild(profile.children[1])}
+                                </Badge>
+                            </div>
                         </div>
                     </Group>
                     <SimpleGrid cols={2}>
