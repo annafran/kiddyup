@@ -84,7 +84,7 @@ const seedDb = async () => {
                     parseFloat(profile.location.coordinates.latitude),
                     parseFloat(profile.location.coordinates.longitude),
                 ],
-                interests: getMultipleInterests(interests, 2),
+                interests: getMultipleInterests(interests, 5),
             };
         });
 
