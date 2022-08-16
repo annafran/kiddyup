@@ -12,6 +12,7 @@ import {
 } from "@mantine/core";
 import { useForm, formList } from "@mantine/form";
 import { randomId } from "@mantine/hooks";
+import MapboxAutocomplete from "react-mapbox-autocomplete";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { At, Trash } from "tabler-icons-react";
@@ -182,7 +183,22 @@ const AddProfile = ({ setActive }) => {
             placeholder="Your profile photo - must be link to image"
             {...form.getInputProps("profilePhoto")}
           />
-          <Select
+          <div>
+            <label htmlFor="autocomplete" className="autocompleteLabel">
+              Enter your address
+            </label>
+            <MapboxAutocomplete
+              publicKey="pk.eyJ1IjoiYW5uYWZyYW4xIiwiYSI6ImNsNm9nenA1bzBhbHQza282a2NidXVyNWEifQ.vASg-HiZubLcdUiVexD9jQ"
+              inputClass="autocompleteInput"
+              name="autocomplete"
+              country="nz"
+              resetSearch={false}
+              required
+              placeholder="Search Address..."
+            />
+          </div>
+
+          {/* <Select
             label="Which city do you live in?"
             placeholder="Pick one"
             searchable
@@ -192,7 +208,7 @@ const AddProfile = ({ setActive }) => {
               return nzCity;
             })}
             {...form.getInputProps("city")}
-          />
+          /> */}
 
           <MultiSelect
             label="Select your interests"
