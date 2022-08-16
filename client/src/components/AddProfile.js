@@ -12,11 +12,13 @@ import {
 } from "@mantine/core";
 import { useForm, formList } from "@mantine/form";
 import { randomId } from "@mantine/hooks";
+import MapboxAutocomplete from "react-mapbox-autocomplete";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { At, Trash } from "tabler-icons-react";
 import "./AddProfile.css";
-const nzCities = require("../data/nzCities.json");
+
+// const nzCities = require("../data/nzCities.json");
 const interestsArray = require("../data/interests.json");
 
 const useStyles = createStyles((theme) => ({
@@ -41,6 +43,9 @@ const useStyles = createStyles((theme) => ({
 
 const AddProfile = ({ setActive }) => {
   const { classes } = useStyles();
+  const [coordinates, setCoordinates] = useState([]);
+  const [city, setCity] = useState("");
+
   const form = useForm({
     initialValues: {
       firstName: "",
@@ -58,23 +63,28 @@ const AddProfile = ({ setActive }) => {
   });
 
   const [isPending, setIsPending] = useState(false);
-
   const navigate = useNavigate();
 
-  const getCitiesArray = () => {
-    return nzCities.map((nzCityData) => {
-      return nzCityData.city;
-    });
-  };
+  //   const getCitiesArray = () => {
+  //     return nzCities.map((nzCityData) => {
+  //       return nzCityData.city;
+  //     });
+  //   };
 
-  const nzCitiesArray = getCitiesArray(nzCities);
+  //   const nzCitiesArray = getCitiesArray(nzCities);
 
-  const findCoordinates = (city) => {
-    const found = nzCities.find((item) => {
-      return item.city === city;
-    });
+  //   const findCoordinates = (city) => {
+  //     const found = nzCities.find((item) => {
+  //       return item.city === city;
+  //     });
 
-    return found ? [found.lat, found.lng] : undefined;
+  //     return found ? [found.lat, found.lng] : undefined;
+  //   };
+
+  const handleSelect = (result, lat, lng, text) => {
+    console.log({ result, lat, lng, text });
+    setCoordinates([parseFloat(lat), parseFloat(lng)]);
+    setCity(text);
   };
 
   const fields = form.values.children.map((item, index) => (
@@ -114,9 +124,8 @@ const AddProfile = ({ setActive }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...values,
-        interests: [values.interests[0], values.interests[1]],
-        coordinates: findCoordinates(values.city),
-        children: [values.children[0], values.children[1]],
+        coordinates: coordinates,
+        city: city,
       }),
     })
       .then((response) => {
@@ -181,7 +190,21 @@ const AddProfile = ({ setActive }) => {
             placeholder="Your profile photo - must be link to image"
             {...form.getInputProps("profilePhoto")}
           />
-          <Select
+          <div>
+            <label htmlFor="autocomplete" className="autocompleteLabel">
+              Enter your city<span style={{ color: "red" }}> *</span>
+            </label>
+            <MapboxAutocomplete
+              publicKey={process.env.REACT_APP_MAPBOX_KEY}
+              inputClass="autocompleteInput"
+              name="autocomplete"
+              resetSearch={false}
+              placeholder="Start typing..."
+              onSuggestionSelect={handleSelect}
+            />
+          </div>
+
+          {/* <Select
             label="Which city do you live in?"
             placeholder="Pick one"
             searchable
@@ -191,7 +214,8 @@ const AddProfile = ({ setActive }) => {
               return nzCity;
             })}
             {...form.getInputProps("city")}
-          />
+          /> */}
+
           <MultiSelect
             label="Select your interests"
             searchable
@@ -239,6 +263,18 @@ const AddProfile = ({ setActive }) => {
               type="submit"
               className={`submitButton ${classes.control}`}
               onClick={() => setActive("/profiles")}
+              disabled={
+                coordinates.length === 0 ||
+                form.values.firstName === "" ||
+                form.values.lastName === "" ||
+                form.values.parentStatus === "" ||
+                form.values.age === null ||
+                form.values.email === "" ||
+                form.values.profilePhoto === "" ||
+                form.values.children.length === 0 ||
+                city === "" ||
+                form.values.interests.length === 0
+              }
             >
               Submit profile
             </Button>
