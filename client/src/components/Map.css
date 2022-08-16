@@ -2,9 +2,6 @@
   border-radius: 100%;
   object-fit: cover;
 }
-/* div.leaflet-div-icon:hover {
-  border: 2px solid red;
-} */
 .popupButton {
   border: none;
   color: white;

@@ -101,7 +101,10 @@ const ProfilePage = () => {
           </Text>
         </SimpleGrid>
         <SimpleGrid cols={1}>
-          {profile.interests.map((interest) => {
+          {profile.interests.map((interest, index) => {
+            if (index > 1) {
+              return null;
+            }
             return (
               <Badge
                 size="md"
@@ -114,7 +117,10 @@ const ProfilePage = () => {
           })}
         </SimpleGrid>
         <SimpleGrid cols={1}>
-          {profile.children.map((child) => {
+          {profile.children.map((child, index) => {
+            if (index > 1) {
+              return null;
+            }
             return (
               <Badge
                 style={{ color: "#345c72", backgroundColor: "#95DCDE" }}

@@ -105,7 +105,10 @@ const Profile = ({ profile, setCenter, setActive }) => {
               </Text>
             </div>
             <div className="interestGrid">
-              {profile.interests.map((interest) => {
+              {profile.interests.map((interest, index) => {
+                if (index > 1) {
+                  return null;
+                }
                 return (
                   <Badge
                     size="md"
@@ -119,7 +122,10 @@ const Profile = ({ profile, setCenter, setActive }) => {
               })}
             </div>
             <div className="childGrid">
-              {profile.children.map((child) => {
+              {profile.children.map((child, index) => {
+                if (index > 1) {
+                  return null;
+                }
                 return (
                   <div>
                     <Badge
