@@ -185,16 +185,19 @@ const AddProfile = ({ setActive }) => {
           />
           <div>
             <label htmlFor="autocomplete" className="autocompleteLabel">
-              Enter your address
+              Enter your address*
             </label>
             <MapboxAutocomplete
               publicKey="pk.eyJ1IjoiYW5uYWZyYW4xIiwiYSI6ImNsNm9nenA1bzBhbHQza282a2NidXVyNWEifQ.vASg-HiZubLcdUiVexD9jQ"
               inputClass="autocompleteInput"
               name="autocomplete"
-              country="nz"
+              // country="nz"
               resetSearch={false}
               required
               placeholder="Search Address..."
+              onSuggestionSelect={(event) => {
+                console.log("hi");
+              }}
             />
           </div>
 
