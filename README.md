@@ -32,6 +32,7 @@ This project uses the following systems:
 - [Mapbox](https://www.mapbox.com/)
 - [Leaflet](https://leafletjs.com/)
 - [React Leaflet](https://react-leaflet.js.org/)
+- [React Mapbox Autocomplete](https://github.com/localvore-today/react-mapbox-autocomplete)
 - [Mongoose](https://mongoosejs.com/)
 - [Express](https://expressjs.com/)
 
