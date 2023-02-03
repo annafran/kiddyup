@@ -59,7 +59,7 @@ This project uses the following systems:
 
 ## Deployed applications
 
-- [Kiddyup](https://kiddyup.netlify.app/)
+- [Kiddyup](https://kiddy-up.onrender.com/)
 
 ## Citations
 
